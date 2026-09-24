@@ -1,0 +1,32 @@
+{
+ "endpoint": "POST https://live-api.panta.market/api/v1/markets/create/quote/",
+ "note": "Real quote captured by the agent pipeline on 2026-09-25. Market creation costs 50 USDC (10 liquidity + 40 platform). We do not broadcast the build \u2014 this artifact demonstrates the API integration, honestly.",
+ "request": {
+  "wallet": "9KTwcJwYXZnQaVQ3QRDeoK2Mn3zKcthjzsWjwj2subC8",
+  "question": "Will BTC close at or above $100,000 on Oct 31, 2026 (Coinbase 1h candle)?",
+  "resolutionRule": "YES if the Coinbase BTC-USD 1-hour candle closing at 23:59 UTC on Oct 31 2026 has open price >= 100000.00; otherwise NO.",
+  "sourcesOfTruth": [
+   "https://www.coinbase.com/price/bitcoin",
+   "https://api.exchange.coinbase.com/products/BTC-USD/candles"
+  ],
+  "category": "crypto",
+  "startTime": 1790291012,
+  "endTime": 1792875812,
+  "resolutionTime": 1792879412,
+  "imageUrl": "https://loveoftheai.github.io/panta-copilot/img/btc-100k.png",
+  "title": "BTC >= $100,000 by Oct 31, 2026",
+  "description": "Resolves YES if Bitcoin trades at or above $100,000 at the close of Oct 31, 2026 UTC, per Coinbase."
+ },
+ "response": {
+  "createId": "cr_78e8849e380e45eaad41dc6091a9dc02",
+  "userId": "usr_ZAFrylAzyyK0vQcRICCxwQ",
+  "apiKeyId": "key_vUuTG_pjCNku1_0_QNCmdQ",
+  "expectedEventPda": "AMLDWB2n4NBkbUiFKjBBYQ3hWEhAdGQTVWxbScFt4Tw5",
+  "paymentUsdc": "50000000",
+  "liquidityInjectionUsdc": "10000000",
+  "platformRevenueUsdc": "40000000",
+  "marketType": "standard",
+  "expiresAt": "2026-09-24T21:08:52.298499Z",
+  "blockhashExpiryHintSec": 60
+ }
+}
