@@ -263,6 +263,16 @@ function findMarket(q) {
   }
   return bestScore >= 6 ? best : null;
 }
+function probeFor(id) {
+  return (SNAP.probes || []).find((p) => p.marketId === id) || null;
+}
+function probeLine(m) {
+  const p = probeFor(m.id);
+  if (!p) return "";
+  return p.ok
+    ? `<div class="row"><span>probe $5 YES</span><b class="stat">${esc(p.shares ?? "?")} sh @ ${esc(p.avgPrice ?? "?")}${p.feeUsdc ? " · fee " + esc(p.feeUsdc) : ""}</b></div>`
+    : `<div class="row"><span>probe $5 YES</span><b>rejected · ${esc(p.error)}</b></div>`;
+}
 function marketCard(m, extra) {
   const p = price(m);
   return `<h4>${esc(m.title)}</h4>
@@ -272,6 +282,7 @@ function marketCard(m, extra) {
     <div class="row"><span>ends</span><b>${fmtT(m.endTime)} (${countdown(m.endTime)})</b></div>
     <div class="row"><span>oracle</span><b>${esc(m.oracle || "—")}</b></div>
     <div class="row"><span>market id</span><b style="font-family:ui-monospace;font-size:11px">${esc(m.id.slice(0, 18))}…</b></div>
+    ${probeLine(m)}
     ${extra || ""}`;
 }
 
