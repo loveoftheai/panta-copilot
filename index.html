@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panta Copilot — the prediction-market desk that talks</title>
+    <meta
+      name="description"
+      content="An agent-fed prediction market desk on Panta: NL copilot, live market snapshots, daily brief. Powered by Panta API. Built for Colosseum Crypto World's Fair."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <div class="logo">P</div>
+        <div>
+          <h1>Panta Copilot</h1>
+          <p class="tagline">the prediction-market desk that talks</p>
+        </div>
+      </div>
+      <div class="meta">
+        <span id="stamp">loading…</span>
+        <span id="counts"></span>
+      </div>
+      <nav>
+        <button class="tab active" data-tab="copilot">Copilot</button>
+        <button class="tab" data-tab="markets">Markets</button>
+        <button class="tab" data-tab="brief">Daily Brief</button>
+        <button class="tab" data-tab="about">How it works</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="copilot" class="panel active">
+        <div class="chat" id="chat"></div>
+        <div class="chips" id="chips"></div>
+        <form id="askform" class="ask">
+          <input
+            id="ask"
+            type="text"
+            autocomplete="off"
+            placeholder="Ask about markets: “sports markets closing soon”, “btc price market”, “quote $20 yes”, “explain bonding curve”…"
+          />
+          <button type="submit">Ask</button>
+        </form>
+        <p class="fineprint">
+          Rule-based NL layer over an agent-fed snapshot. Not financial advice.
+          Markets data © Panta.
+        </p>
+      </section>
+
+      <section id="markets" class="panel">
+        <div class="filters" id="filters"></div>
+        <div class="wall" id="wall"></div>
+      </section>
+
+      <section id="brief" class="panel">
+        <article id="briefbody" class="brief">loading…</article>
+      </section>
+
+      <section id="about" class="panel">
+        <article class="brief">
+          <h2>How this works</h2>
+          <p>
+            <strong>Panta Copilot</strong> is a prediction-market desk built on
+            the
+            <a href="https://docs.panta.market/" target="_blank" rel="noopener"
+              >Panta API</a
+            >
+            — binary YES/NO markets on Solana, quoted in USDC, where the API
+            never custodies wallets: it returns unsigned transactions, your
+            wallet signs.
+          </p>
+          <h3>The agent pipeline (the “AI” part, honestly disclosed)</h3>
+          <ul>
+            <li>
+              An autonomous coding agent (Claude Code on a DGX Spark) calls the
+              Panta API on a schedule: full catalog pagination → per-market
+              details → tradability probes (real
+              <code>primaryorderquote</code> calls).
+            </li>
+            <li>
+              It computes the stats you see in the Daily Brief, writes the
+              snapshot <code>data/snapshot.json</code>, and ships it to this
+              page.
+            </li>
+            <li>
+              The chat layer is a transparent rule-based NLU (intent
+              classification + fuzzy market matching) over that snapshot — no
+              hidden LLM calls, no hallucinated prices. Every number on this
+              page traces to a Panta API response.
+            </li>
+          </ul>
+          <h3>Trading flow (as the API designs it)</h3>
+          <ol>
+            <li>
+              <code>POST /primaryorderquote/</code> — simulate a YES/NO fill on
+              the bonding curve (shares, avg price, fee).
+            </li>
+            <li>
+              <code>POST /primaryorderbuild/</code> — get an unsigned Solana
+              transaction from a live quote.
+            </li>
+            <li>Your wallet signs. You broadcast on your RPC.</li>
+            <li>
+              <code>POST /primaryordersubmit/</code> — report the signature;
+              Panta confirms asynchronously.
+            </li>
+          </ol>
+          <p>
+            This demo shows steps 1–2 against real markets; signing is left to a
+            real wallet (the app never holds keys).
+          </p>
+          <h3>Attribution</h3>
+          <p>
+            Powered by
+            <a href="https://www.panta.market/" target="_blank" rel="noopener"
+              >Panta</a
+            >
+            · built by
+            <a
+              href="https://github.com/loveoftheai"
+              target="_blank"
+              rel="noopener"
+              >loveoftheai</a
+            >
+            (agent-built, human-directed) for the Colosseum Crypto World’s Fair
+            ·
+            <a
+              href="https://github.com/loveoftheai/panta-copilot"
+              target="_blank"
+              rel="noopener"
+              >source</a
+            >.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span
+        >Powered by Panta · agent-built, human-directed ·
+        <a
+          href="https://github.com/loveoftheai/panta-copilot"
+          target="_blank"
+          rel="noopener"
+          >GitHub</a
+        ></span
+      >
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
