@@ -20,6 +20,8 @@ The chat layer is transparent intent classification + fuzzy matching over the sn
 
 Trading flow per the API's design: quote → unsigned transaction → your wallet signs → broadcast on your RPC → report signature. This app never holds keys.
 
+**Demo video:** 39s app walkthrough — [demo.webm](https://loveoftheai.github.io/panta-copilot/demo.webm) (plays in-browser; same recording as the submission video).
+
 **Powered by Panta** · built for the Colosseum Crypto World's Fair / Panta API Sidetrack · agent-built, human-directed.
 
 ## Run locally
