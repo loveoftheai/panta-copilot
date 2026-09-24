@@ -3,7 +3,8 @@
 **The prediction-market desk that talks** — an agent-fed front end for [Panta](https://www.panta.market/) binary YES/NO prediction markets on Solana.
 
 - **Copilot** — rule-based NL layer over an agent snapshot: browse, match markets, closing-soon, explain the primary/secondary/claim flow, quote walkthrough
-- **Markets** — deduped catalog wall with phase badges (primary · pre-open / secondary / resolved) and live countdowns
+- **Markets** — deduped catalog wall with phase badges (primary · pre-open / secondary / resolved) and live countdowns, plus real `primaryorderquote` probes on primary markets (rejections recorded as-is)
+- **Positions** — the desk wallet read live via `GET /positions/` (agent-fed each snapshot; flat by design — signing stays in your wallet)
 - **Daily Brief** — written by the agent pipeline from real API pulls (category mix, phases, one honest observation)
 
 ## Architecture (honest AI disclosure)
