@@ -40,6 +40,20 @@ async function boot() {
     $("#stamp").textContent = "snapshot unavailable";
     return;
   }
+  fetch("data/create-quote.json")
+    .then((r) => r.json())
+    .then((cq) => {
+      const u = (x) =>
+        (Number(x) / 1e6).toLocaleString(undefined, {
+          maximumFractionDigits: 2,
+        });
+      $("#cqbox").innerHTML =
+        `<b class="stat">${esc(cq.response.createId)}</b> · standard market · ` +
+        `creation fee <b class="stat">${u(cq.response.paymentUsdc)} USDC</b> ` +
+        `(${u(cq.response.liquidityInjectionUsdc)} liquidity + ${u(cq.response.platformRevenueUsdc)} platform) · ` +
+        `expires in ${cq.response.blockhashExpiryHintSec}s (unsigned-tx flow — never broadcast)`;
+    })
+    .catch(() => {});
   $("#stamp").textContent =
     `agent snapshot · ${new Date(SNAP.generatedAt).toLocaleString()}`;
   $("#stamp").classList.add("live");
