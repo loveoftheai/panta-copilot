@@ -61,6 +61,7 @@ async function boot() {
     `${SNAP.marketCount} markets in catalog · ${SNAP.detailCount} detailed`;
   renderFilters();
   renderWall("all");
+  renderPositions();
   loadBrief();
   seedChat();
 }
@@ -143,6 +144,30 @@ function renderWall(key) {
     </div>`,
       )
       .join("") || '<p style="color:var(--dim)">no markets in this filter.</p>';
+}
+
+/* ---------- positions (desk wallet, agent-fed) ---------- */
+function renderPositions() {
+  const el = $("#posbody");
+  const p = SNAP.deskPositions;
+  if (!p || !p.summary) {
+    el.innerHTML =
+      "<h2>Desk wallet positions</h2><p>positions unavailable in this snapshot.</p>";
+    return;
+  }
+  const s = p.summary;
+  const rows = (p.positions || [])
+    .map(
+      (x) =>
+        `<div class="row"><span>${esc(x.marketId.slice(0, 10))}… · ${esc(x.side || "?")}</span><b>${esc(x.shares ?? "?")} sh · ${esc(x.valueUsdc ?? "?")} USDC${x.claimable ? " · claimable" : ""}</b></div>`,
+    )
+    .join("");
+  el.innerHTML = `<h2>Desk wallet — live via GET /positions/</h2>
+    <div class="row"><span>wallet</span><b style="font-family:ui-monospace;font-size:11px">${esc(p.wallet.slice(0, 14))}…</b></div>
+    <div class="row"><span>current value</span><b class="stat">${esc(s.currentValueUsdc)} USDC</b></div>
+    <div class="row"><span>primary contributed</span><b>${esc(s.primaryContributedUsdc)} USDC</b></div>
+    <div class="row"><span>positions</span><b>${s.valuedPositions} valued · ${s.unvaluedPositions} unvalued</b></div>
+    ${rows || "<p>This desk wallet has no open positions yet — trading requires signing an unsigned tx in a real wallet (see How it works), so the demo desk stays flat by design. The pipeline re-reads this endpoint every snapshot; any wallet address can be checked the same way.</p>"}`;
 }
 
 /* ---------- daily brief ---------- */
