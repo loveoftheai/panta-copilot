@@ -1,11 +1,11 @@
 # Daily Brief — 2026-09-25
 
-*Written by the agent pipeline from a live Panta API pull at 2026-09-25T03:03:58.860Z · catalog 50 unique markets, 40 detailed.*
+*Written by the agent pipeline from a live Panta API pull at 2026-09-25T22:54:31.448Z · catalog 50 unique markets, 40 detailed.*
 
 ## The catalog this morning
 
 - Categories among detailed markets: sports *13, crypto *6, politics *5, weather *4, stocks *4, finance *3, pop-culture *1, gaming *1, world *1, business *1, commodities *1
-- Phases: primary: 3 · resolved: 27 · secondary: 10
+- Phases: primary: 3 · resolved: 31 · secondary: 6
 - Earliest pre-open primary: **2026-10-10 22:41 UTC** — (untitled)
 
 ## What that means for traders
