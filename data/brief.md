@@ -1,16 +1,16 @@
-# Daily Brief — 2026-09-26
+# Daily Brief — 2026-09-30
 
-*Written by the agent pipeline from a live Panta API pull at 2026-09-26T22:54:31.691Z · catalog 50 unique markets, 40 detailed.*
+*Written by the agent pipeline from a live Panta API pull at 2026-09-30T01:37:00.759Z · catalog 50 unique markets, 40 detailed.*
 
 ## The catalog this morning
 
-- Categories among detailed markets: sports *13, crypto *6, politics *5, weather *4, stocks *4, finance *3, pop-culture *1, gaming *1, world *1, business *1, commodities *1
-- Phases: primary: 2 · resolved: 27 · secondary: 11
-- Earliest pre-open primary: **2026-10-10 22:41 UTC** — (untitled)
+- Categories among detailed markets: sports *19, crypto *11, stocks *3, pop-culture *2, commodities *2, space-universe *1, politics *1, world *1
+- Phases: primary: 3 · secondary: 12 · resolved: 25
+- Earliest pre-open primary: **2026-10-01 16:00 UTC** — Will ICE Brent Crude Oil Futures (December 2026 Contract) se…
 
 ## What that means for traders
 
-- Real quote probes ($5 YES) this pull: INVALID_MARKET_PARAMS · INVALID_MARKET_PARAMS. Rejections recorded as-is — the answer to "can I buy YES right now" is whatever the quote endpoint says, never a guess.
+- Real quote probes ($5 YES) this pull: fillable · fillable · fillable. Rejections recorded as-is — the answer to "can I buy YES right now" is whatever the quote endpoint says, never a guess.
 - Secondary trading lives on the official Panta UI; the API exposes spot prices (yesPrice on details).
 - Resolved markets settle at 1 / 0 strings; claim flow (claim/build) applies to winning shares.
 
