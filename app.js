@@ -89,11 +89,83 @@ async function boot() {
     `${SNAP.marketCount} markets in catalog · ${SNAP.detailCount} detailed${SNAP.registry ? ` · ${SNAP.registry.marketsTracked} tracked in registry` : ""}`;
   renderFilters();
   renderWall("all");
+  renderChanged();
   renderRegistry();
   renderQuotes();
   renderPositions();
   loadBrief();
   seedChat();
+}
+
+/* ---------- "What changed" landing (30-second orientation) ---------- */
+let REG = null;
+async function loadReg() {
+  if (REG) return REG;
+  try {
+    REG = await (await fetch("data/registry.json")).json();
+  } catch {}
+  return REG;
+}
+function chLabel(id) {
+  const m = SNAP.markets.find((x) => x.id === id);
+  if (m) return mTitle(m);
+  const meta = REG && REG.meta ? REG.meta[id] : null;
+  return (
+    (meta && meta.title) ||
+    `${(meta && meta.cat) || "market"} · ${String(id).slice(0, 4)}…`
+  );
+}
+async function renderChanged() {
+  const el = $("#chgbody");
+  if (!el) return;
+  await loadReg();
+  const C = SNAP.changes || {};
+  const since = C.prevGeneratedAt
+    ? C.prevGeneratedAt.slice(0, 16).replace("T", " ")
+    : "the first pull";
+  // movers: markets with ≥2 priced observations in registry history
+  const movers = Object.entries((REG && REG.history) || {})
+    .map(([id, h]) => {
+      const pts = h.filter((p) => p[1] != null);
+      if (pts.length < 2) return null;
+      const a = Number(pts[0][1]);
+      const b = Number(pts[pts.length - 1][1]);
+      if (!a) return null;
+      return { id, a, b, d: ((b - a) / a) * 100 };
+    })
+    .filter(Boolean)
+    .sort((x, y) => Math.abs(y.d) - Math.abs(x.d))
+    .slice(0, 6);
+  const newRows = (C.newIds || [])
+    .slice(0, 8)
+    .map(
+      (id, i) =>
+        `<div class="row"><span>${i + 1}. ${esc(chLabel(id).slice(0, 60))}</span><b>${esc((REG && REG.meta && REG.meta[id] && REG.meta[id].phase) || "new")}</b></div>`,
+    )
+    .join("");
+  const phaseRows = (C.phaseChanged || [])
+    .map(
+      (c) =>
+        `<div class="row"><span>${esc(chLabel(c.id).slice(0, 56))}</span><b>${esc(c.from)} → ${esc(c.to)}</b></div>`,
+    )
+    .join("");
+  const moverRows = movers
+    .map(
+      (m) =>
+        `<div class="row"><span>${esc(chLabel(m.id).slice(0, 56))}</span><b class="stat">${m.d >= 0 ? "+" : ""}${m.d.toFixed(1)}% <span class="sub">YES ${m.a.toFixed(3)} → ${m.b.toFixed(3)}</span></b></div>`,
+    )
+    .join("");
+  el.innerHTML = `<h2>What changed on Panta?</h2>
+    <p class="sub">Since the ${esc(since)} UTC daily pull — recorded observations, not live prices. Pipeline documented in <a href="https://github.com/loveoftheai/panta-copilot/blob/main/COLLECTOR.md" target="_blank" rel="noopener">COLLECTOR.md</a>.</p>
+    <h3>First seen in the registry · ${(C.newIds || []).length}</h3>
+    ${newRows || '<p style="color:var(--dim)">no first-seen markets in the last pull.</p>'}
+    <h3>Phase changed · ${(C.phaseChanged || []).length}</h3>
+    ${phaseRows || '<p style="color:var(--dim)">no phase changes recorded.</p>'}
+    <h3>Biggest recorded price moves</h3>
+    ${moverRows || '<p style="color:var(--dim)">fewer than 2 priced observations per market so far — the 2-hour sweep is accumulating.</p>'}
+    <div class="row" style="margin-top:10px"><span>not in today's detailed sample</span><b>${C.notSeenToday ?? "—"} <span class="sub">the list caps at 50 and rotates; the registry keeps them</span></b></div>
+    <div class="row"><span>registry</span><b>${(SNAP.registry && SNAP.registry.marketsTracked) ?? "?"} markets · ${(SNAP.registry && SNAP.registry.pulls) ?? "?"} pulls · last sweep ${esc(String((SNAP.registry && SNAP.registry.lastSweepAt) || "").slice(11, 16))} UTC</b></div>
+    <p class="fineprint">Next: ask the Copilot (market search, recorded quotes, concepts) or browse Markets / Registry / Quotes. Everything shown traces to a timestamped Panta API response in the snapshot.</p>`;
 }
 
 /* ---------- tabs ---------- */
@@ -199,10 +271,8 @@ async function renderRegistry() {
   const stats = $("#regstats"),
     wallEl = $("#regwall");
   if (!stats || !wallEl) return;
-  let reg = null;
-  try {
-    reg = await (await fetch("data/registry.json")).json();
-  } catch {
+  const reg = await loadReg();
+  if (!reg) {
     stats.textContent = "registry unavailable in this build.";
     return;
   }
