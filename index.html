@@ -26,6 +26,7 @@
       <nav>
         <button class="tab active" data-tab="copilot">Copilot</button>
         <button class="tab" data-tab="markets">Markets</button>
+        <button class="tab" data-tab="registry">Registry</button>
         <button class="tab" data-tab="quotes">Quotes</button>
         <button class="tab" data-tab="positions">Positions</button>
         <button class="tab" data-tab="brief">Daily Brief</button>
@@ -55,6 +56,27 @@
       <section id="markets" class="panel">
         <div class="filters" id="filters"></div>
         <div class="wall" id="wall"></div>
+      </section>
+
+      <section id="registry" class="panel">
+        <article class="brief">
+          <h2>Persistent registry — every market ever seen</h2>
+          <p>
+            Panta's live list rotates and caps at 50 per pull; this registry is
+            the union of <em>every</em> market the agent has ever seen across
+            pulls. A sweep daemon runs every 2 hours — one catalog pull, and a
+            price point is appended per market only when price / phase / volume
+            actually changed. Sparklines show the YES price through those
+            points; flat sections mean no change was recorded.
+          </p>
+          <div id="regstats"></div>
+          <div class="wall" id="regwall"></div>
+          <p class="fineprint">
+            Recorded observations at sweep cadence — not live prices. Titles
+            come from the daily detailed pull; markets not yet detailed show
+            category · id.
+          </p>
+        </article>
       </section>
 
       <section id="quotes" class="panel">
