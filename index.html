@@ -26,6 +26,7 @@
       <nav>
         <button class="tab active" data-tab="copilot">Copilot</button>
         <button class="tab" data-tab="markets">Markets</button>
+        <button class="tab" data-tab="quotes">Quotes</button>
         <button class="tab" data-tab="positions">Positions</button>
         <button class="tab" data-tab="brief">Daily Brief</button>
         <button class="tab" data-tab="about">How it works</button>
@@ -54,6 +55,24 @@
       <section id="markets" class="panel">
         <div class="filters" id="filters"></div>
         <div class="wall" id="wall"></div>
+      </section>
+
+      <section id="quotes" class="panel">
+        <article class="brief">
+          <h2>Recorded quotes (not live)</h2>
+          <p>
+            The pipeline records a real
+            <code>POST /primaryorderquote/</code> for each market × side ×
+            amount at snapshot time (daily). Pick a combination to see the
+            recorded result — fills and rejections alike. Quotes are not
+            refreshed on demand here; nothing is signed or broadcast by this
+            app.
+          </p>
+          <div class="filters" id="qsel" style="margin: 10px 0"></div>
+          <div id="qres" class="brief" style="padding: 10px"></div>
+          <h3 style="margin-top: 18px">Full matrix</h3>
+          <div id="qtable"></div>
+        </article>
       </section>
 
       <section id="positions" class="panel">
@@ -93,8 +112,9 @@
             <li>
               The chat layer is a transparent rule-based NLU (intent
               classification + fuzzy market matching) over that snapshot — no
-              hidden LLM calls, no hallucinated prices. Every number on this
-              page traces to a Panta API response.
+              hidden LLM calls, no invented prices — market numbers are derived
+              from Panta API responses recorded in the snapshot (computed stats
+              and formatting aside).
             </li>
           </ul>
           <h3>Trading flow (as the API designs it)</h3>
@@ -114,8 +134,10 @@
             </li>
           </ol>
           <p>
-            This demo shows steps 1–2 against real markets; signing is left to a
-            real wallet (the app never holds keys).
+            This demo shows step 1 (recorded quotes) against real markets; steps
+            2–4 — order building, signing, broadcasting — are not implemented
+            here: they belong to your wallet and tooling. The app never holds
+            keys.
           </p>
           <h3>Market creation — real quote artifact</h3>
           <p>
