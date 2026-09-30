@@ -42,11 +42,13 @@ const mTitle = (m) => {
    Unmapped codes render raw; nothing is ever invented. */
 const REJ = {
   INVALID_MARKET_PARAMS:
-    "the bonding curve won't quote this yet — typically a pre-open market or params outside the curve's range",
+    "the API rejected these params at request time — reasons vary (amount, market state, config); the raw message is preserved in the snapshot",
   MARKET_NOT_IN_PRIMARY:
-    "market has graduated out of primary — primary quotes no longer apply, pricing lives on the secondary order book now",
+    "the primary-buy route was unavailable for this market at observation time — it does not prove secondary trading is unavailable",
   INSUFFICIENT_FUNDS: "desk wallet lacks the USDC for this amount",
   MARKET_NOT_FOUND: "market id is no longer in the live catalog",
+  AMOUNT_TOO_SMALL:
+    "this amount was rejected; a larger amount is a possible next check, not a promise of success",
 };
 const decodeRej = (r) => {
   const c = String(r?.error || "");
@@ -208,13 +210,16 @@ async function renderRegistry() {
   const hist = reg.history || {};
   const ids = Object.keys(reg.firstSeen || {});
   const pts = Object.values(hist).reduce((a, h) => a + h.length, 0);
+  const priceObs = Object.values(hist)
+    .flat()
+    .filter((p) => p[1] != null).length;
   const lastSweep =
     Object.values(reg.lastSeen || {})
       .sort()
       .pop() || "";
   stats.innerHTML = `<div class="row"><span>markets ever seen</span><b class="stat">${ids.length}</b></div>
     <div class="row"><span>catalog pulls</span><b>${reg.pulls ?? "?"}</b></div>
-    <div class="row"><span>price points (change-only)</span><b>${pts}</b></div>
+    <div class="row"><span>change-only observations</span><b>${pts}</b><span class="sub" style="margin-left:6px">${priceObs} with a price</span></div>
     <div class="row"><span>tracking since</span><b>${esc(
       String(Object.values(reg.firstSeen).sort()[0] || "")
         .slice(0, 16)
@@ -248,7 +253,7 @@ async function renderRegistry() {
       <div class="title">${esc(label(id))}</div>
       ${sparkSVG(h)}
       <div class="row"><span>YES ${fp != null ? fp.toFixed(3) : "—"} → ${lp != null ? lp.toFixed(3) : "—"}</span><b class="stat">${d != null ? (d >= 0 ? "+" : "") + d.toFixed(1) + "%" : "—"}</b></div>
-      <div class="row"><span>${h.length} pts</span><span>vol ${Number(h[h.length - 1][3] || 0).toLocaleString()}</span></div>
+      <div class="row"><span>${h.length} obs (${h.filter((p) => p[1] != null).length} priced)</span><span>vol ${Number(h[h.length - 1][3] || 0).toLocaleString()}</span></div>
     </div>`;
       })
       .join("") ||
