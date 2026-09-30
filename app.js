@@ -38,6 +38,25 @@ const mTitle = (m) => {
   return `${m?.category || "market"} · ${m?.oracle || "no oracle"} · ${String(m?.id || "").slice(0, 4)}…`;
 };
 
+/* plain-language rejection decoder — the API's own codes, translated.
+   Unmapped codes render raw; nothing is ever invented. */
+const REJ = {
+  INVALID_MARKET_PARAMS:
+    "the bonding curve won't quote this yet — typically a pre-open market or params outside the curve's range",
+  MARKET_NOT_IN_PRIMARY:
+    "market has graduated out of primary — primary quotes no longer apply, pricing lives on the secondary order book now",
+  INSUFFICIENT_FUNDS: "desk wallet lacks the USDC for this amount",
+  MARKET_NOT_FOUND: "market id is no longer in the live catalog",
+};
+const decodeRej = (r) => {
+  const c = String(r?.error || "");
+  if (REJ[c]) return REJ[c];
+  if (r?.http === 401)
+    return "API key rejected — auth issue, not a market issue";
+  if (r?.http === 429) return "rate limited — back off and retry";
+  return c ? `unmapped code, shown raw: ${c}` : "no error body returned";
+};
+
 /* ---------- boot ---------- */
 async function boot() {
   try {
@@ -68,6 +87,7 @@ async function boot() {
     `${SNAP.marketCount} markets in catalog · ${SNAP.detailCount} detailed${SNAP.registry ? ` · ${SNAP.registry.marketsTracked} tracked in registry` : ""}`;
   renderFilters();
   renderWall("all");
+  renderRegistry();
   renderQuotes();
   renderPositions();
   loadBrief();
@@ -154,6 +174,87 @@ function renderWall(key) {
       .join("") || '<p style="color:var(--dim)">no markets in this filter.</p>';
 }
 
+/* ---------- registry (2h-cadence sweep, agent-fed) ---------- */
+function sparkSVG(h) {
+  const W = 110,
+    H = 26;
+  const idx = h
+    .map((p, i) => (p[1] == null ? null : [i, Number(p[1])]))
+    .filter(Boolean);
+  if (idx.length < 2)
+    return `<span style="color:var(--dim);font-size:11px">≥2 pts needed</span>`;
+  const vs = idx.map(([, v]) => v);
+  const min = Math.min(...vs),
+    max = Math.max(...vs);
+  const x = (i) => ((i / (h.length - 1)) * W).toFixed(1);
+  const y = (v) =>
+    (H - 3 - ((v - min) / (max - min || 1)) * (H - 6)).toFixed(1);
+  const poly = idx.map(([i, v]) => `${x(i)},${y(v)}`).join(" ");
+  const up = vs[vs.length - 1] >= vs[0];
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="display:block"><polyline points="${poly}" fill="none" stroke="${up ? "#3fb27f" : "#d0665f"}" stroke-width="1.5"/></svg>`;
+}
+async function renderRegistry() {
+  const stats = $("#regstats"),
+    wallEl = $("#regwall");
+  if (!stats || !wallEl) return;
+  let reg = null;
+  try {
+    reg = await (await fetch("data/registry.json")).json();
+  } catch {
+    stats.textContent = "registry unavailable in this build.";
+    return;
+  }
+  const meta = reg.meta || {};
+  const hist = reg.history || {};
+  const ids = Object.keys(reg.firstSeen || {});
+  const pts = Object.values(hist).reduce((a, h) => a + h.length, 0);
+  const lastSweep =
+    Object.values(reg.lastSeen || {})
+      .sort()
+      .pop() || "";
+  stats.innerHTML = `<div class="row"><span>markets ever seen</span><b class="stat">${ids.length}</b></div>
+    <div class="row"><span>catalog pulls</span><b>${reg.pulls ?? "?"}</b></div>
+    <div class="row"><span>price points (change-only)</span><b>${pts}</b></div>
+    <div class="row"><span>tracking since</span><b>${esc(
+      String(Object.values(reg.firstSeen).sort()[0] || "")
+        .slice(0, 16)
+        .replace("T", " "),
+    )} UTC</b></div>
+    <div class="row"><span>last sweep</span><b>${esc(String(lastSweep).slice(0, 16).replace("T", " "))} UTC</b></div>`;
+  const label = (id) => {
+    const m = SNAP.markets.find((x) => x.id === id);
+    if (m && m.title && m.title !== "(untitled)") return m.title;
+    return (
+      meta[id]?.title ||
+      `${meta[id]?.cat || "market"} · ${String(id).slice(0, 4)}…`
+    );
+  };
+  const rows = Object.entries(hist)
+    .filter(([, h]) => h.length)
+    .sort((a, b) => b[1].length - a[1].length)
+    .slice(0, 48);
+  wallEl.innerHTML =
+    rows
+      .map(([id, h]) => {
+        const fp = h[0][1] != null ? Number(h[0][1]) : null;
+        const lp =
+          h[h.length - 1][1] != null ? Number(h[h.length - 1][1]) : null;
+        const d =
+          fp != null && lp != null && fp > 0 ? ((lp - fp) / fp) * 100 : null;
+        return `<div class="mcard">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="cat">${esc(meta[id]?.cat || "—")}</span><span class="badge">${esc(h[h.length - 1][4] || meta[id]?.phase || "?")}</span>
+      </div>
+      <div class="title">${esc(label(id))}</div>
+      ${sparkSVG(h)}
+      <div class="row"><span>YES ${fp != null ? fp.toFixed(3) : "—"} → ${lp != null ? lp.toFixed(3) : "—"}</span><b class="stat">${d != null ? (d >= 0 ? "+" : "") + d.toFixed(1) + "%" : "—"}</b></div>
+      <div class="row"><span>${h.length} pts</span><span>vol ${Number(h[h.length - 1][3] || 0).toLocaleString()}</span></div>
+    </div>`;
+      })
+      .join("") ||
+    '<p style="color:var(--dim)">no history points yet — the 2h sweep is accumulating.</p>';
+}
+
 /* ---------- recorded quotes (agent-fed matrix, not live) ---------- */
 function renderQuotes() {
   const Q = SNAP.quoteMatrix || [];
@@ -191,6 +292,7 @@ function renderQuotes() {
            <div class="row"><span>as of</span><b>${esc(SNAP.generatedAt)}</b></div>
            <p class="fineprint">Recorded by the pipeline at snapshot time — not a live quote.</p>`
         : `<div class="row"><span>rejected</span><b class="stat">HTTP ${esc(r.http ?? "?")} · ${esc(r.error)}</b></div>
+           <div class="row"><span>in plain words</span><b>${esc(decodeRej(r))}</b></div>
            <p class="fineprint">Rejections are recorded as-is — the desk never invents prices.</p>`;
   };
   ["qm", "qs", "qa"].forEach((id) =>
@@ -202,7 +304,7 @@ function renderQuotes() {
       `<tr><td>${esc(title(q.marketId).slice(0, 40))}</td><td>${q.side.toUpperCase()}</td><td>$${Number(q.amountUsdc).toFixed(0)}</td><td>${
         q.ok
           ? `<b class="stat">${esc(q.shares ?? "?")} sh @ ${esc(q.avgPrice ?? "?")}</b>`
-          : `<span style="color:var(--dim)">${esc(q.http ?? "")} ${esc(q.error || "")}</span>`
+          : `<span style="color:var(--dim)" title="${esc(decodeRej(q))}">${esc(q.http ?? "")} ${esc(q.error || "")}</span>`
       }</td></tr>`,
   ).join("")}</tbody></table>`;
 }
@@ -496,7 +598,7 @@ function handleAsk(qRaw) {
             ? `<div class="row"><span>recorded ${esc(rec.side.toUpperCase())} $${Number(rec.amountUsdc).toFixed(0)} estimate</span><b class="stat">${esc(rec.shares ?? "?")} shares @ ${esc(rec.avgPrice ?? "?")} avg${rec.feeUsdc ? ` · fee ${esc(rec.feeUsdc)} USDC` : ""}</b></div>
                <div class="sub">Recorded by the pipeline at snapshot time (${esc(SNAP.generatedAt)}) — not a live quote.${near} Full matrix in the Quotes tab.</div>`
             : `<div class="row"><span>recorded ${esc(rec.side.toUpperCase())} $${Number(rec.amountUsdc).toFixed(0)} request</span><b>rejected · HTTP ${esc(rec.http ?? "?")} · ${esc(rec.error)}</b></div>
-               <div class="sub">Rejection recorded as-is at snapshot time — not a live quote.${near} Full matrix in the Quotes tab.</div>`,
+               <div class="sub">Plain words: ${esc(decodeRej(rec))}. Rejection recorded as-is at snapshot time — not a live quote.${near} Full matrix in the Quotes tab.</div>`,
         ),
       );
     } else if (m && mine.length) {
