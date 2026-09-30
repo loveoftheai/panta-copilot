@@ -1,10 +1,137 @@
 {
  "agent": "loveoftheai agent pipeline (Claude Code on DGX Spark)",
- "generatedAt": "2026-09-30T01:51:45.329Z",
+ "generatedAt": "2026-09-30T11:10:46.431Z",
  "source": "Panta API v1 (live-api.panta.market)",
  "marketCount": 50,
  "detailCount": 40,
+ "registry": {
+  "marketsTracked": 50,
+  "pulls": 1,
+  "since": "2026-09-30T11:08:54.031Z"
+ },
+ "changes": {
+  "prevGeneratedAt": "2026-09-30T01:51:45.329Z",
+  "newIds": [
+   "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM"
+  ],
+  "phaseChanged": [
+   {
+    "id": "4m7Lkk2SYkP4g95cGtf8ns4eGQiQiWZSVKTr1P3bmXoh",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "5z7TxmJuBngEFcBWT2GfWBmmQvzcP3cH3Vs54HPkaeUN",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "CMMp6w39hnbsW5qLaeRV8HDioq2HfDx4bR6GWkQFLwTM",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "8R5sx7Ms8BfYZz1na6ZLuh39JVMQgi6eNnNASj5pVjAY",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "AWesFhQ1uQXwsMBE2EPRVqKD6iG8GqiU2KMSkAeFqrb4",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "F5RSyCPuS4KLiUtzvRai5uaVAMLD9aAt22bSxgDK3z1C",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "7qCJEoQXSdNm7RdVsfu3uK5aLnv8CaKPKu13AHhXX6Pg",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "27ZuF9VF6Tz1HcuwsW4ys4jAshNciFqYPSsmU3z4AMJM",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "2KCSfe1nAsc6PZWsXndxjHbHUH2JKs1HvdDgBAZAXLyY",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "2g8qvVB4UzdhbWqmdzzoXJf2QojPvpAF16etenCqT5kp",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "6FQJgDy9f9TQz37nvSFdVBFcxnpDJC5m4bvGTcMcnJB3",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "EhehvNMYdPsJFy288rqHySX4hK6kY6Z6WZ21YKhncdXQ",
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "GKebvYjZPe7QPrHPnNSsBL4t62JYBzhRdb2qB1dACS8e",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "HeZfxnRXKZup67xdrP9V7pTacHvUZWkhwt8zfYPYBG9K",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "GXwpfBfnuftdr9JTm1iydKyCKCXCYjzTefqksG78cR3h",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "ErqQGGFrw3ebJVqPQXHis31Y8JqWgmBKdJDKGkJKCzH5",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "HmR1wos9wThXnG96kraX2CkxVEMT5t9qEEtZ3VYosV5s",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "BicZZk9N4QsWP6acd8MX2c6ybsdsofMkx9KZRgCiqYJB",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "GZYBuLrmy7aRJZUxFj2Bquebv3gAVcP1sgtXtLnygnQ3",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "DhJHjBziVqw9DyPxw6GiLAqh97QmZzcALsT6jyFSJuv9",
+    "from": "resolved",
+    "to": "secondary"
+   }
+  ],
+  "notSeenToday": 1
+ },
  "probes": [
+  {
+   "marketId": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
+   "side": "yes",
+   "amountUsdc": "5.00",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
+  },
   {
    "marketId": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
    "side": "yes",
@@ -17,10 +144,9 @@
    "marketId": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ok": true,
-   "shares": "9.916153",
-   "avgPrice": "0.504227",
-   "feeUsdc": "0.10"
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   },
   {
    "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
@@ -33,22 +159,68 @@
  ],
  "quoteMatrix": [
   {
+   "marketId": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
+   "side": "yes",
+   "amountUsdc": "5.00",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
+  },
+  {
+   "marketId": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
+   "side": "yes",
+   "amountUsdc": "25.00",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
+  },
+  {
+   "marketId": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
+   "side": "yes",
+   "amountUsdc": "100.00",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
+  },
+  {
+   "marketId": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
+   "side": "no",
+   "amountUsdc": "5.00",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
+  },
+  {
+   "marketId": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
+   "side": "no",
+   "amountUsdc": "25.00",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
+  },
+  {
+   "marketId": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
+   "side": "no",
+   "amountUsdc": "100.00",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
+  },
+  {
    "marketId": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ok": true,
-   "shares": "9.576967",
-   "avgPrice": "0.522085",
-   "feeUsdc": "0.10"
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   },
   {
    "marketId": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
    "side": "yes",
    "amountUsdc": "25.00",
-   "ok": true,
-   "shares": "46.513686",
-   "avgPrice": "0.537476",
-   "feeUsdc": "0.50"
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   },
   {
    "marketId": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
@@ -62,10 +234,9 @@
    "marketId": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
    "side": "no",
    "amountUsdc": "5.00",
-   "ok": true,
-   "shares": "10.284055",
-   "avgPrice": "0.486189",
-   "feeUsdc": "0.10"
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   },
   {
    "marketId": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
@@ -87,10 +258,9 @@
    "marketId": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ok": true,
-   "shares": "9.916153",
-   "avgPrice": "0.504227",
-   "feeUsdc": "0.10"
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   },
   {
    "marketId": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
@@ -120,10 +290,9 @@
    "marketId": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
    "side": "no",
    "amountUsdc": "25.00",
-   "ok": true,
-   "shares": "48.08262",
-   "avgPrice": "0.519938",
-   "feeUsdc": "0.50"
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   },
   {
    "marketId": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
@@ -132,59 +301,6 @@
    "ok": false,
    "http": 400,
    "error": "INVALID_MARKET_PARAMS"
-  },
-  {
-   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
-   "side": "yes",
-   "amountUsdc": "5.00",
-   "ok": false,
-   "http": 400,
-   "error": "INVALID_MARKET_PARAMS"
-  },
-  {
-   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
-   "side": "yes",
-   "amountUsdc": "25.00",
-   "ok": true,
-   "shares": "47.874838",
-   "avgPrice": "0.522194",
-   "feeUsdc": "0.50"
-  },
-  {
-   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
-   "side": "yes",
-   "amountUsdc": "100.00",
-   "ok": true,
-   "shares": "173.990729",
-   "avgPrice": "0.574743",
-   "feeUsdc": "2.00"
-  },
-  {
-   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
-   "side": "no",
-   "amountUsdc": "5.00",
-   "ok": true,
-   "shares": "9.962069",
-   "avgPrice": "0.501903",
-   "feeUsdc": "0.10"
-  },
-  {
-   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
-   "side": "no",
-   "amountUsdc": "25.00",
-   "ok": true,
-   "shares": "48.274904",
-   "avgPrice": "0.517867",
-   "feeUsdc": "0.50"
-  },
-  {
-   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
-   "side": "no",
-   "amountUsdc": "100.00",
-   "ok": true,
-   "shares": "175.206364",
-   "avgPrice": "0.570755",
-   "feeUsdc": "2.00"
   }
  ],
  "deskPositions": {
@@ -200,6 +316,23 @@
   "positions": []
  },
  "markets": [
+  {
+   "id": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
+   "category": "crypto",
+   "title": "(untitled)",
+   "description": "",
+   "phase": "primary",
+   "status": "open",
+   "resolved": false,
+   "startTime": 1790751840,
+   "endTime": 1790946000,
+   "oracle": "world-crypto-coinbase",
+   "yesPrice": null,
+   "noPrice": null,
+   "primaryVolume": 0,
+   "secondaryVolume": 0,
+   "isGraduated": false
+  },
   {
    "id": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
    "category": "pop-culture",
@@ -254,16 +387,16 @@
   {
    "id": "F2nK5f6NTgVA8zVT2CzRYRNaMcntv3njEkNCozGMs2Sj",
    "category": "space-universe",
-   "title": "(untitled)",
+   "title": "Will SpaceX’s Starship (Flight 14) successfully achieve its target Earth orbit and deploy at least one Starlink V3 satellite on or before Wednesday, September 30, 2026, at 11:59 PM BST?",
    "description": "",
    "phase": "secondary",
-   "status": "secondary_active",
+   "status": "secondary",
    "resolved": false,
    "startTime": 1790802000,
    "endTime": 1790809140,
    "oracle": "world-space-nasa",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0.50014949",
+   "noPrice": "0.49985051",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -305,16 +438,16 @@
   {
    "id": "4m7Lkk2SYkP4g95cGtf8ns4eGQiQiWZSVKTr1P3bmXoh",
    "category": "stocks",
-   "title": "(untitled)",
+   "title": "Will Berkshire Hathaway Inc. Class B (BRK.B) close at or above $510.00 on Wednesday, September 23, 2026, at 3:00 PM CT?\"",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1790186400,
    "endTime": 1790193900,
    "oracle": "world-stocks-bloomberg",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -322,16 +455,16 @@
   {
    "id": "FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9",
    "category": "sports",
-   "title": "Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellatio",
+   "title": "Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellation of the planned October defense spending review before Wednesday, September 23, 2026, at 11:59 PM BST?",
    "description": "Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellation of the planned October defense spending review before Wednesday, September 23, 2026, at 11:59 PM BST?",
-   "phase": "secondary",
-   "status": "secondary_active",
-   "resolved": false,
+   "phase": "resolved",
+   "status": "resolved",
+   "resolved": true,
    "startTime": 1790193600,
    "endTime": 1790204340,
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -339,16 +472,16 @@
   {
    "id": "5z7TxmJuBngEFcBWT2GfWBmmQvzcP3cH3Vs54HPkaeUN",
    "category": "crypto",
-   "title": "(untitled)",
+   "title": "Will Zcash (ZEC) close at or above $1,550.00 on Wednesday, September 23, 2026, at 11:59 PM BST?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1790193600,
    "endTime": 1790204340,
    "oracle": "world-crypto-coingecko",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "1",
+   "noPrice": "0",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -356,16 +489,16 @@
   {
    "id": "CMMp6w39hnbsW5qLaeRV8HDioq2HfDx4bR6GWkQFLwTM",
    "category": "sports",
-   "title": "(untitled)",
+   "title": "Will Man Utd keep a clean sheet against Fulham?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1789920000,
    "endTime": 1789925400,
    "oracle": "world-sports-fifa",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -373,16 +506,16 @@
   {
    "id": "8R5sx7Ms8BfYZz1na6ZLuh39JVMQgi6eNnNASj5pVjAY",
    "category": "sports",
-   "title": "(untitled)",
+   "title": "Will Arsenal drop points against Brighton at the AMEX?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1789829100,
    "endTime": 1789833600,
    "oracle": "world-sports-fifa",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "1",
+   "noPrice": "0",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -392,14 +525,14 @@
    "category": "crypto",
    "title": "[TEST] BTC >= 1000 USD",
    "description": "Panta API playground test market — please ignore.",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1789193548,
    "endTime": 1789200748,
    "oracle": "https://www.coingecko.com",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "1",
+   "noPrice": "0",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -407,16 +540,16 @@
   {
    "id": "F5RSyCPuS4KLiUtzvRai5uaVAMLD9aAt22bSxgDK3z1C",
    "category": "pop-culture",
-   "title": "(untitled)",
+   "title": "Will the official Milan Fashion Week calendar list more than 54 physical runway shows by Thursday, September 17, 2026?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1789682400,
    "endTime": 1789686900,
    "oracle": "world-entertainment-variety",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -424,16 +557,16 @@
   {
    "id": "7qCJEoQXSdNm7RdVsfu3uK5aLnv8CaKPKu13AHhXX6Pg",
    "category": "politics",
-   "title": "(untitled)",
+   "title": "Will a bipartisan compromise text of the CLARITY Act be officially introduced in the House by Thursday, September 17, 2026?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1789527600,
    "endTime": 1789679400,
    "oracle": "world-politics-ap",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -441,16 +574,16 @@
   {
    "id": "27ZuF9VF6Tz1HcuwsW4ys4jAshNciFqYPSsmU3z4AMJM",
    "category": "sports",
-   "title": "Will U.S. Initial Jobless Claims be reported at or above 206,000 on Thursday, September 17",
+   "title": "Will U.S. Initial Jobless Claims be reported at or above 206,000 on Thursday, September 17, 2026?",
    "description": "Will U.S. Initial Jobless Claims be reported at or above 206,000 on Thursday, September 17, 2026?",
-   "phase": "secondary",
-   "status": "secondary_active",
-   "resolved": false,
+   "phase": "resolved",
+   "status": "resolved",
+   "resolved": true,
    "startTime": 1789639200,
    "endTime": 1789653600,
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -458,16 +591,16 @@
   {
    "id": "2KCSfe1nAsc6PZWsXndxjHbHUH2JKs1HvdDgBAZAXLyY",
    "category": "stocks",
-   "title": "(untitled)",
+   "title": "Will the S&P 500 Index close at or above 7,700 on Thursday, September 17, 2026?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1789671600,
    "endTime": 1789676100,
    "oracle": "world-stocks-bloomberg",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -475,16 +608,16 @@
   {
    "id": "2g8qvVB4UzdhbWqmdzzoXJf2QojPvpAF16etenCqT5kp",
    "category": "sports",
-   "title": "Will Ethereum (ETH) daily transaction volume be less than Arbitrum (ARB) on September 16, ",
+   "title": "Will Ethereum (ETH) daily transaction volume be less than Arbitrum (ARB) on September 16, 2026?",
    "description": "Will Ethereum (ETH) daily transaction volume be less than Arbitrum (ARB) on September 16, 2026?",
-   "phase": "secondary",
-   "status": "secondary_active",
-   "resolved": false,
+   "phase": "resolved",
+   "status": "resolved",
+   "resolved": true,
    "startTime": 1789592400,
    "endTime": 1789600200,
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -526,16 +659,16 @@
   {
    "id": "6FQJgDy9f9TQz37nvSFdVBFcxnpDJC5m4bvGTcMcnJB3",
    "category": "sports",
-   "title": "Will Man Utd beat Man City in the Manchester derby?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1789313400,
    "endTime": 1789320600,
    "oracle": "world-sports-fifa",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -545,14 +678,14 @@
    "category": "crypto",
    "title": "Will the marketcap of SOLANA drop to $11 billion ?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1789149360,
    "endTime": 1789160340,
    "oracle": "https://www.coingecko.com",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -596,14 +729,14 @@
    "category": "crypto",
    "title": "Will BTC drop to $5,000 in the next 1 hour?",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788874800,
    "endTime": 1788878400,
    "oracle": "https://www.coingecko.com",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -662,16 +795,16 @@
   {
    "id": "HeZfxnRXKZup67xdrP9V7pTacHvUZWkhwt8zfYPYBG9K",
    "category": "commodities",
-   "title": "Will Brent Crude Oil futures (Front-Month) settle at or above $94.50 per barrel on Wednesday, September 9, 2026?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788973200,
    "endTime": 1788979500,
    "oracle": "world-stocks-bloomberg",
-   "yesPrice": "1",
-   "noPrice": "0",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -679,16 +812,16 @@
   {
    "id": "GXwpfBfnuftdr9JTm1iydKyCKCXCYjzTefqksG78cR3h",
    "category": "stocks",
-   "title": "Will Apple Inc. (AAPL) close at or above $320.00 USD on Wednesday, September 9, 2026?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788980400,
    "endTime": 1788984900,
    "oracle": "world-stocks-bloomberg",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -730,16 +863,16 @@
   {
    "id": "ErqQGGFrw3ebJVqPQXHis31Y8JqWgmBKdJDKGkJKCzH5",
    "category": "sports",
-   "title": "Will Juventus beat A.C Milan?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788720300,
    "endTime": 1788727500,
    "oracle": "world-sports-fifa",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -764,16 +897,16 @@
   {
    "id": "HmR1wos9wThXnG96kraX2CkxVEMT5t9qEEtZ3VYosV5s",
    "category": "sports",
-   "title": "Will Man Utd make it back to back wins vs Everton?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788699600,
    "endTime": 1788706800,
    "oracle": "world-sports-fifa",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -781,16 +914,16 @@
   {
    "id": "BicZZk9N4QsWP6acd8MX2c6ybsdsofMkx9KZRgCiqYJB",
    "category": "sports",
-   "title": "Will Nottingham Forest F.C. score a goal before the 60th minute (59:59 or earlier) of their match against Liverpool F.C. on Saturday, August 29, 2026?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788003000,
    "endTime": 1788010200,
    "oracle": "world-sports-fifa",
-   "yesPrice": "1",
-   "noPrice": "0",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -815,16 +948,16 @@
   {
    "id": "GZYBuLrmy7aRJZUxFj2Bquebv3gAVcP1sgtXtLnygnQ3",
    "category": "sports",
-   "title": "Will the total number of goals scored in the Chelsea F.C. vs. Brighton & Hove Albion F.C. match on Sunday, August 30, 2026 be Over 3.5?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788094800,
    "endTime": 1788102000,
    "oracle": "me-sports-bein",
-   "yesPrice": "1",
-   "noPrice": "0",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -832,16 +965,16 @@
   {
    "id": "DhJHjBziVqw9DyPxw6GiLAqh97QmZzcALsT6jyFSJuv9",
    "category": "sports",
-   "title": "Will Erling Haaland score 2 or more goals against Crystal Palace on Friday?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1787943300,
    "endTime": 1787952600,
    "oracle": "world-sports-fifa",
-   "yesPrice": "1",
-   "noPrice": "0",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -862,24 +995,7 @@
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
-  },
-  {
-   "id": "Fcf63RXGBUhjjpD5NgP7tf9zWmULfndvWsspNcjf6TLB",
-   "category": "world",
-   "title": "(untitled)",
-   "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
-   "resolved": true,
-   "startTime": 1788206400,
-   "endTime": 1788246000,
-   "oracle": "world-politics-ap",
-   "yesPrice": null,
-   "noPrice": null,
-   "primaryVolume": 0,
-   "secondaryVolume": 0,
-   "isGraduated": true
   }
  ],
- "notes": "Catalog pagination can repeat marketIds (cursor loop); this snapshot is deduped. Catalog phase can be stale vs per-market detail; detail endpoint wins here. Quote probes are real POST /primaryorderquote/ calls ($5 YES, never broadcast) — rejections recorded as-is."
+ "notes": "Catalog endpoint returns up to 50 per pull (server cursor never advances); this snapshot is deduped. A persistent registry accumulates every market ever seen across daily pulls (marketsTracked counts it) because the live list rotates. Catalog phase can be stale vs per-market detail; detail endpoint wins here. Quote probes and the quote matrix are real POST /primaryorderquote/ calls ($5 YES plus market × side × amount, never broadcast) — rejections recorded as-is."
 }
