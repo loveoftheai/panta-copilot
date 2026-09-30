@@ -65,7 +65,7 @@ async function boot() {
     `agent snapshot · ${new Date(SNAP.generatedAt).toLocaleString()}`;
   $("#stamp").classList.add("live");
   $("#counts").textContent =
-    `${SNAP.marketCount} markets in catalog · ${SNAP.detailCount} detailed`;
+    `${SNAP.marketCount} markets in catalog · ${SNAP.detailCount} detailed${SNAP.registry ? ` · ${SNAP.registry.marketsTracked} tracked in registry` : ""}`;
   renderFilters();
   renderWall("all");
   renderQuotes();
