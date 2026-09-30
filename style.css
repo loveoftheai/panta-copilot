@@ -377,3 +377,31 @@ footer {
     padding: 10px;
   }
 }
+
+/* ---------- quotes console ---------- */
+#qsel {
+  gap: 8px;
+  flex-wrap: wrap;
+}
+#qsel select {
+  background: var(--bg, #14161c);
+  color: var(--fg, #e8e6e3);
+  border: 1px solid var(--line, #2a2d36);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+table.qt {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+table.qt td {
+  border-top: 1px solid var(--line, #2a2d36);
+  padding: 6px 8px;
+  text-align: left;
+}
+table.qt td:first-child {
+  color: var(--dim, #8b8f98);
+}
