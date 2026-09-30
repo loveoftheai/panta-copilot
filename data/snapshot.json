@@ -6,8 +6,9 @@
  "detailCount": 40,
  "registry": {
   "marketsTracked": 50,
-  "pulls": 1,
-  "since": "2026-09-30T11:08:54.031Z"
+  "pulls": 2,
+  "since": "2026-09-30T11:08:54.031Z",
+  "lastSweepAt": "2026-09-30T11:21:41.993Z"
  },
  "changes": {
   "prevGeneratedAt": "2026-09-30T01:51:45.329Z",
