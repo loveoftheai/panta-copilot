@@ -143,7 +143,7 @@ console.log(
 //     questions; quotes are read-only). Front-end Quotes console serves these
 //     as timestamped records, clearly not live quotes.
 const quoteMatrix = [];
-for (const m of uniq.filter((d) => d.phase === "primary").slice(0, 3)) {
+for (const m of uniq.filter((d) => d.phase === "primary").slice(0, 6)) {
   for (const side of ["yes", "no"]) {
     for (const amt of ["5.00", "25.00", "100.00"]) {
       quoteMatrix.push(await quoteReq(m.marketId, side, amt));
