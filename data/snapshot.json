@@ -1,154 +1,108 @@
 {
  "agent": "loveoftheai agent pipeline (Claude Code on DGX Spark)",
- "generatedAt": "2026-09-30T11:10:46.431Z",
+ "generatedAt": "2026-09-30T11:29:17.289Z",
  "source": "Panta API v1 (live-api.panta.market)",
  "marketCount": 50,
  "detailCount": 40,
  "registry": {
   "marketsTracked": 50,
-  "pulls": 4,
-  "since": "2026-09-30T11:08:54.031Z",
-  "lastSweepAt": "2026-09-30T11:23:23.742Z",
-  "historyPoints": 50
+  "pulls": 5,
+  "since": "2026-09-30T11:08:54.031Z"
  },
  "changes": {
-  "prevGeneratedAt": "2026-09-30T01:51:45.329Z",
-  "newIds": [
-   "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM"
-  ],
+  "prevGeneratedAt": "2026-09-30T11:10:46.431Z",
+  "newIds": [],
   "phaseChanged": [
    {
-    "id": "4m7Lkk2SYkP4g95cGtf8ns4eGQiQiWZSVKTr1P3bmXoh",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "5z7TxmJuBngEFcBWT2GfWBmmQvzcP3cH3Vs54HPkaeUN",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "CMMp6w39hnbsW5qLaeRV8HDioq2HfDx4bR6GWkQFLwTM",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "8R5sx7Ms8BfYZz1na6ZLuh39JVMQgi6eNnNASj5pVjAY",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "AWesFhQ1uQXwsMBE2EPRVqKD6iG8GqiU2KMSkAeFqrb4",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "F5RSyCPuS4KLiUtzvRai5uaVAMLD9aAt22bSxgDK3z1C",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "7qCJEoQXSdNm7RdVsfu3uK5aLnv8CaKPKu13AHhXX6Pg",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "27ZuF9VF6Tz1HcuwsW4ys4jAshNciFqYPSsmU3z4AMJM",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
     "id": "2KCSfe1nAsc6PZWsXndxjHbHUH2JKs1HvdDgBAZAXLyY",
-    "from": "secondary",
-    "to": "resolved"
+    "from": "resolved",
+    "to": "secondary"
    },
    {
     "id": "2g8qvVB4UzdhbWqmdzzoXJf2QojPvpAF16etenCqT5kp",
-    "from": "secondary",
-    "to": "resolved"
+    "from": "resolved",
+    "to": "secondary"
    },
    {
-    "id": "6FQJgDy9f9TQz37nvSFdVBFcxnpDJC5m4bvGTcMcnJB3",
+    "id": "5nNayE898RcNfAaApPUyzeX1Lqu82npF9v5qFKP3Rxxy",
     "from": "resolved",
     "to": "secondary"
    },
    {
     "id": "EhehvNMYdPsJFy288rqHySX4hK6kY6Z6WZ21YKhncdXQ",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "GeBYoNa966zcF1oJ2w8h2WkCLsjwyzsg7iy88kzju2hK",
     "from": "secondary",
     "to": "resolved"
    },
    {
     "id": "GKebvYjZPe7QPrHPnNSsBL4t62JYBzhRdb2qB1dACS8e",
-    "from": "resolved",
-    "to": "secondary"
+    "from": "secondary",
+    "to": "resolved"
    },
    {
-    "id": "HeZfxnRXKZup67xdrP9V7pTacHvUZWkhwt8zfYPYBG9K",
-    "from": "resolved",
-    "to": "secondary"
-   },
-   {
-    "id": "GXwpfBfnuftdr9JTm1iydKyCKCXCYjzTefqksG78cR3h",
+    "id": "EarxUvuGTwMs5nKvAgkenYAdTa9kvXibjiNSQcTRxdFY",
     "from": "resolved",
     "to": "secondary"
    },
    {
     "id": "ErqQGGFrw3ebJVqPQXHis31Y8JqWgmBKdJDKGkJKCzH5",
-    "from": "resolved",
-    "to": "secondary"
+    "from": "secondary",
+    "to": "resolved"
    },
    {
-    "id": "HmR1wos9wThXnG96kraX2CkxVEMT5t9qEEtZ3VYosV5s",
-    "from": "resolved",
-    "to": "secondary"
-   },
-   {
-    "id": "BicZZk9N4QsWP6acd8MX2c6ybsdsofMkx9KZRgCiqYJB",
-    "from": "resolved",
-    "to": "secondary"
+    "id": "9GL6mDAhfqrhzwswueHWPGtWYmDHpxpc6pvpmicorGSy",
+    "from": "secondary",
+    "to": "resolved"
    },
    {
     "id": "GZYBuLrmy7aRJZUxFj2Bquebv3gAVcP1sgtXtLnygnQ3",
-    "from": "resolved",
-    "to": "secondary"
+    "from": "secondary",
+    "to": "resolved"
    },
    {
     "id": "DhJHjBziVqw9DyPxw6GiLAqh97QmZzcALsT6jyFSJuv9",
-    "from": "resolved",
-    "to": "secondary"
+    "from": "secondary",
+    "to": "resolved"
+   },
+   {
+    "id": "3U1rqTX2SYK11jbHi19CAB2siYCoBcuybHKxVNztymis",
+    "from": "secondary",
+    "to": "resolved"
    }
   ],
-  "notSeenToday": 1
+  "notSeenToday": 0
  },
  "probes": [
   {
    "marketId": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ok": false,
-   "http": 400,
-   "error": "INVALID_MARKET_PARAMS"
+   "ok": true,
+   "shares": "9.918027",
+   "avgPrice": "0.504132",
+   "feeUsdc": "0.10"
   },
   {
    "marketId": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ok": false,
-   "http": 400,
-   "error": "INVALID_MARKET_PARAMS"
+   "ok": true,
+   "shares": "9.562025",
+   "avgPrice": "0.522901",
+   "feeUsdc": "0.10"
   },
   {
    "marketId": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ok": false,
-   "http": 400,
-   "error": "INVALID_MARKET_PARAMS"
+   "ok": true,
+   "shares": "9.916153",
+   "avgPrice": "0.504227",
+   "feeUsdc": "0.10"
   },
   {
    "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
@@ -300,9 +254,63 @@
    "marketId": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
    "side": "no",
    "amountUsdc": "100.00",
+   "ok": true,
+   "shares": "174.622651",
+   "avgPrice": "0.572663",
+   "feeUsdc": "2.00"
+  },
+  {
+   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
+   "side": "yes",
+   "amountUsdc": "5.00",
+   "ok": true,
+   "shares": "9.874369",
+   "avgPrice": "0.506361",
+   "feeUsdc": "0.10"
+  },
+  {
+   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
+   "side": "yes",
+   "amountUsdc": "25.00",
    "ok": false,
    "http": 400,
    "error": "INVALID_MARKET_PARAMS"
+  },
+  {
+   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
+   "side": "yes",
+   "amountUsdc": "100.00",
+   "ok": true,
+   "shares": "173.990729",
+   "avgPrice": "0.574743",
+   "feeUsdc": "2.00"
+  },
+  {
+   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
+   "side": "no",
+   "amountUsdc": "5.00",
+   "ok": true,
+   "shares": "9.962069",
+   "avgPrice": "0.501903",
+   "feeUsdc": "0.10"
+  },
+  {
+   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
+   "side": "no",
+   "amountUsdc": "25.00",
+   "ok": true,
+   "shares": "48.274904",
+   "avgPrice": "0.517867",
+   "feeUsdc": "0.50"
+  },
+  {
+   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
+   "side": "no",
+   "amountUsdc": "100.00",
+   "ok": true,
+   "shares": "175.206364",
+   "avgPrice": "0.570755",
+   "feeUsdc": "2.00"
   }
  ],
  "deskPositions": {
@@ -355,16 +363,16 @@
   {
    "id": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
    "category": "commodities",
-   "title": "(untitled)",
+   "title": "Will ICE Brent Crude Oil Futures (December 2026 Contract) settle at or above $104.00 per barrel on Thursday, October 1, 2026, at 6:30 PM BST?",
    "description": "",
    "phase": "primary",
-   "status": "open",
+   "status": "primary",
    "resolved": false,
    "startTime": 1790870400,
    "endTime": 1790875800,
    "oracle": "world-stocks-bloomberg",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0.500096044",
+   "noPrice": "0.499903956",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": false
@@ -372,16 +380,16 @@
   {
    "id": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
    "category": "sports",
-   "title": "(untitled)",
+   "title": "Over 38.5 combined score in the Pittsburgh Steelers vs. Cleveland Browns game on Thursday, October 1, 2026?",
    "description": "",
    "phase": "primary",
-   "status": "open",
+   "status": "primary",
    "resolved": false,
    "startTime": 1790901900,
    "endTime": 1790913600,
    "oracle": "world-sports-espn",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0.502247129",
+   "noPrice": "0.497752871",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": false
@@ -406,16 +414,16 @@
   {
    "id": "6wXkUmZdLSU1Fm2wRY3rrTuPZ3a3t2rzZarFAYqUXM98",
    "category": "crypto",
-   "title": "(untitled)",
+   "title": "Will Ethereum (ETH) close at or above $2,700.00 on Wednesday, September 30, 2026, at 11:59 PM BST?",
    "description": "",
    "phase": "secondary",
-   "status": "secondary_active",
+   "status": "secondary",
    "resolved": false,
    "startTime": 1790802000,
    "endTime": 1790809140,
    "oracle": "world-crypto-coingecko",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0.500046922",
+   "noPrice": "0.499953078",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -423,16 +431,16 @@
   {
    "id": "5fhzcovNvTnWgUMZbPSgFxJwcgRCSFemjiu5DLsvsosT",
    "category": "crypto",
-   "title": "(untitled)",
+   "title": "Will bitcoin hit $100,000 by 31 Dec 2026",
    "description": "",
    "phase": "secondary",
-   "status": "secondary_active",
+   "status": "secondary",
    "resolved": false,
    "startTime": 1789824300,
    "endTime": 1798671600,
    "oracle": "world-crypto-coinbase",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0.5",
+   "noPrice": "0.5",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -593,16 +601,16 @@
   {
    "id": "2KCSfe1nAsc6PZWsXndxjHbHUH2JKs1HvdDgBAZAXLyY",
    "category": "stocks",
-   "title": "Will the S&P 500 Index close at or above 7,700 on Thursday, September 17, 2026?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1789671600,
    "endTime": 1789676100,
    "oracle": "world-stocks-bloomberg",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -610,16 +618,16 @@
   {
    "id": "2g8qvVB4UzdhbWqmdzzoXJf2QojPvpAF16etenCqT5kp",
    "category": "sports",
-   "title": "Will Ethereum (ETH) daily transaction volume be less than Arbitrum (ARB) on September 16, 2026?",
+   "title": "Will Ethereum (ETH) daily transaction volume be less than Arbitrum (ARB) on September 16, ",
    "description": "Will Ethereum (ETH) daily transaction volume be less than Arbitrum (ARB) on September 16, 2026?",
-   "phase": "resolved",
-   "status": "resolved",
-   "resolved": true,
+   "phase": "secondary",
+   "status": "secondary_active",
+   "resolved": false,
    "startTime": 1789592400,
    "endTime": 1789600200,
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -644,16 +652,16 @@
   {
    "id": "5nNayE898RcNfAaApPUyzeX1Lqu82npF9v5qFKP3Rxxy",
    "category": "sports",
-   "title": "Will Sunderland score at least 2 goals against Arsenal?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1789239600,
    "endTime": 1789246800,
    "oracle": "world-sports-fifa",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -680,14 +688,14 @@
    "category": "crypto",
    "title": "Will the marketcap of SOLANA drop to $11 billion ?",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1789149360,
    "endTime": 1789160340,
    "oracle": "https://www.coingecko.com",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -714,14 +722,14 @@
    "category": "crypto",
    "title": "Will ETH be above $5,000 within the next 1hr ?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1788903000,
    "endTime": 1788907200,
    "oracle": "https://www.coingecko.com",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -731,14 +739,14 @@
    "category": "crypto",
    "title": "Will BTC drop to $5,000 in the next 1 hour?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1788874800,
    "endTime": 1788878400,
    "oracle": "https://www.coingecko.com",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -780,16 +788,16 @@
   {
    "id": "EarxUvuGTwMs5nKvAgkenYAdTa9kvXibjiNSQcTRxdFY",
    "category": "sports",
-   "title": "Will Kimi Antonelli finish in the Top 6 (6th place or higher) in the Italian Grand Prix?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788699600,
    "endTime": 1788714000,
    "oracle": "eu-sports-skysports",
-   "yesPrice": "1",
-   "noPrice": "0",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -865,16 +873,16 @@
   {
    "id": "ErqQGGFrw3ebJVqPQXHis31Y8JqWgmBKdJDKGkJKCzH5",
    "category": "sports",
-   "title": "(untitled)",
+   "title": "Will Juventus beat A.C Milan?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1788720300,
    "endTime": 1788727500,
    "oracle": "world-sports-fifa",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -933,16 +941,16 @@
   {
    "id": "9GL6mDAhfqrhzwswueHWPGtWYmDHpxpc6pvpmicorGSy",
    "category": "sports",
-   "title": "(untitled)",
+   "title": "Will a Newcastle United F.C. player be the first player to receive a card (yellow or red) in the match against Tottenham Hotspur F.C. on Saturday, August 29, 2026?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1788021000,
    "endTime": 1788028200,
    "oracle": "world-sports-fifa",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -950,16 +958,16 @@
   {
    "id": "GZYBuLrmy7aRJZUxFj2Bquebv3gAVcP1sgtXtLnygnQ3",
    "category": "sports",
-   "title": "(untitled)",
+   "title": "Will the total number of goals scored in the Chelsea F.C. vs. Brighton & Hove Albion F.C. match on Sunday, August 30, 2026 be Over 3.5?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1788094800,
    "endTime": 1788102000,
    "oracle": "me-sports-bein",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "1",
+   "noPrice": "0",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -967,16 +975,16 @@
   {
    "id": "DhJHjBziVqw9DyPxw6GiLAqh97QmZzcALsT6jyFSJuv9",
    "category": "sports",
-   "title": "(untitled)",
+   "title": "Will Erling Haaland score 2 or more goals against Crystal Palace on Friday?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1787943300,
    "endTime": 1787952600,
    "oracle": "world-sports-fifa",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "1",
+   "noPrice": "0",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -984,16 +992,16 @@
   {
    "id": "3U1rqTX2SYK11jbHi19CAB2siYCoBcuybHKxVNztymis",
    "category": "sports",
-   "title": "4 EPL Teams scored 3 or more goals last matchweek. Would we see it happen again?",
+   "title": "Will 4 or more teams score 3 or more goals in Matchweek 2 of the 2026/27 English Premier League season?",
    "description": "4 EPL Teams scored 3 or more goals last matchweek. Would we see it happen again?",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1787769900,
    "endTime": 1788211800,
    "oracle": "world-sports-fifa",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "1",
+   "noPrice": "0",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
