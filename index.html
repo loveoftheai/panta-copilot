@@ -24,7 +24,8 @@
         <span id="counts"></span>
       </div>
       <nav>
-        <button class="tab active" data-tab="copilot">Copilot</button>
+        <button class="tab active" data-tab="changed">What changed</button>
+        <button class="tab" data-tab="copilot">Copilot</button>
         <button class="tab" data-tab="markets">Markets</button>
         <button class="tab" data-tab="registry">Registry</button>
         <button class="tab" data-tab="quotes">Quotes</button>
@@ -35,7 +36,11 @@
     </header>
 
     <main>
-      <section id="copilot" class="panel active">
+      <section id="changed" class="panel active">
+        <article id="chgbody" class="brief">loading…</article>
+      </section>
+
+      <section id="copilot" class="panel">
         <div class="chat" id="chat"></div>
         <div class="chips" id="chips"></div>
         <form id="askform" class="ask">
@@ -190,7 +195,12 @@
           <p>
             The full pipeline — daily pull + 2-hour registry sweep with detail
             price enrichment — is documented and reproducible in
-            <a href="https://github.com/loveoftheai/panta-copilot/blob/main/COLLECTOR.md" target="_blank" rel="noopener">COLLECTOR.md</a>.
+            <a
+              href="https://github.com/loveoftheai/panta-copilot/blob/main/COLLECTOR.md"
+              target="_blank"
+              rel="noopener"
+              >COLLECTOR.md</a
+            >.
           </p>
           <h3>Attribution</h3>
           <p>
