@@ -6,7 +6,7 @@
     <title>Panta Copilot — the prediction-market desk that talks</title>
     <meta
       name="description"
-      content="An agent-fed prediction market desk on Panta: NL copilot, live market snapshots, daily brief. Powered by Panta API. Built for Colosseum Crypto World's Fair."
+      content="An agent-fed prediction market desk on Panta: NL copilot, daily market snapshots, recorded quotes, daily brief. Powered by Panta API. Built for Colosseum Crypto World's Fair."
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -100,8 +100,9 @@
           <ul>
             <li>
               An autonomous coding agent (Claude Code on a DGX Spark) calls the
-              Panta API on a schedule: full catalog pagination → per-market
-              details → tradability probes (real
+              Panta API on a schedule: the market catalog (one capped pull — the
+              server's cursor endpoint never advances) → per-market details →
+              tradability probes and a recorded quote matrix (real
               <code>primaryorderquote</code> calls).
             </li>
             <li>
@@ -139,7 +140,9 @@
             here: they belong to your wallet and tooling. The app never holds
             keys.
           </p>
-          <h3>Market creation — real quote artifact</h3>
+          <h3>
+            Market creation — real quote artifact (expired, kept verbatim)
+          </h3>
           <p>
             The pipeline ran a live <code>markets/create/quote</code> for a BTC
             ≥ $100k market (image served from this site). Result:
@@ -149,7 +152,8 @@
           </p>
           <h3>Demo video</h3>
           <p>
-            39-second walkthrough of this app (Copilot → Markets → Brief):
+            35-second walkthrough of this app (Copilot → Markets → Quotes →
+            Brief):
             <a
               href="https://loveoftheai.github.io/panta-copilot/demo.webm"
               target="_blank"
