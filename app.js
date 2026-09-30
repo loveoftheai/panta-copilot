@@ -30,6 +30,13 @@ const countdown = (unix) => {
 };
 const price = (m) =>
   m.yesPrice != null ? `YES ${Number(m.yesPrice).toFixed(2)}` : null;
+/* many live Panta markets carry no title — label them category · oracle · id
+   instead of showing three indistinguishable "(untitled)" rows */
+const mTitle = (m) => {
+  const t = m?.title;
+  if (t && t !== "(untitled)") return t;
+  return `${m?.category || "market"} · ${m?.oracle || "no oracle"} · ${String(m?.id || "").slice(0, 4)}…`;
+};
 
 /* ---------- boot ---------- */
 async function boot() {
@@ -50,8 +57,8 @@ async function boot() {
       $("#cqbox").innerHTML =
         `<b class="stat">${esc(cq.response.createId)}</b> · standard market · ` +
         `creation fee <b class="stat">${u(cq.response.paymentUsdc)} USDC</b> ` +
-        `(${u(cq.response.liquidityInjectionUsdc)} liquidity + ${u(cq.response.platformRevenueUsdc)} platform) · ` +
-        `expires in ${cq.response.blockhashExpiryHintSec}s (unsigned-tx flow — never broadcast)`;
+        `(${u(cq.response.liquidityInjectionUsdc)} liquidity + ${u(cq.response.platformRevenueUsdc)} platform).` +
+        `<div class="sub" style="margin-top:6px">Historical test quote captured 2026-09-25 and kept verbatim — it expired ${esc(cq.response.expiresAt)}, and its request params were internally inconsistent (question says “close”, the rule tests the candle open; end timestamp ≠ Oct 31). Shown for the endpoint's real response shape and fee split, not as a valid market.</div>`;
     })
     .catch(() => {});
   $("#stamp").textContent =
@@ -139,7 +146,7 @@ function renderWall(key) {
       <div style="display:flex;justify-content:space-between;align-items:center">
         <span class="cat">${esc(m.category || "—")}</span>${marketBadge(m)}
       </div>
-      <div class="title">${esc(m.title)}</div>
+      <div class="title">${esc(mTitle(m))}</div>
       <div class="row"><span>${price(m) || "price via quote"}</span><span>${countdown(m.endTime) || fmtT(m.endTime)}</span></div>
       <div class="row"><span>oracle: ${esc(m.oracle || "—")}</span><span>vol ${Number(m.primaryVolume || 0).toLocaleString()}</span></div>
     </div>`,
@@ -160,8 +167,10 @@ function renderQuotes() {
     return;
   }
   const mIds = [...new Set(Q.map((q) => q.marketId))];
-  const title = (id) =>
-    (SNAP.markets.find((m) => m.id === id)?.title || id).slice(0, 70);
+  const title = (id) => {
+    const m = SNAP.markets.find((x) => x.id === id);
+    return (m ? mTitle(m) : id).slice(0, 70);
+  };
   sel.innerHTML =
     `<select id="qm">${mIds.map((i) => `<option value="${i}">${esc(title(i))}</option>`).join("")}</select>` +
     `<select id="qs"><option value="yes">YES</option><option value="no">NO</option></select>` +
@@ -178,7 +187,7 @@ function renderQuotes() {
     res.innerHTML = !r
       ? "<p>not recorded in this snapshot.</p>"
       : r.ok
-        ? `<div class="row"><span>fill</span><b class="stat">${esc(r.shares ?? "?")} shares @ ${esc(r.avgPrice ?? "?")} avg${r.feeUsdc ? ` · fee ${esc(r.feeUsdc)} USDC` : ""}</b></div>
+        ? `<div class="row"><span>recorded estimate</span><b class="stat">${esc(r.shares ?? "?")} shares @ ${esc(r.avgPrice ?? "?")} avg${r.feeUsdc ? ` · fee ${esc(r.feeUsdc)} USDC` : ""}</b></div>
            <div class="row"><span>as of</span><b>${esc(SNAP.generatedAt)}</b></div>
            <p class="fineprint">Recorded by the pipeline at snapshot time — not a live quote.</p>`
         : `<div class="row"><span>rejected</span><b class="stat">HTTP ${esc(r.http ?? "?")} · ${esc(r.error)}</b></div>
@@ -347,12 +356,12 @@ function probeLine(m) {
   const p = probeFor(m.id);
   if (!p) return "";
   return p.ok
-    ? `<div class="row"><span>probe $5 YES</span><b class="stat">${esc(p.shares ?? "?")} sh @ ${esc(p.avgPrice ?? "?")}${p.feeUsdc ? " · fee " + esc(p.feeUsdc) : ""}</b></div>`
-    : `<div class="row"><span>probe $5 YES</span><b>rejected · ${esc(p.error)}</b></div>`;
+    ? `<div class="row"><span>separate $5 YES probe</span><b class="stat">${esc(p.shares ?? "?")} sh @ ${esc(p.avgPrice ?? "?")}${p.feeUsdc ? " · fee " + esc(p.feeUsdc) : ""}</b></div>`
+    : `<div class="row"><span>separate $5 YES probe</span><b>rejected · ${esc(p.error)}</b></div>`;
 }
 function marketCard(m, extra) {
   const p = price(m);
-  return `<h4>${esc(m.title)}</h4>
+  return `<h4>${esc(mTitle(m))}</h4>
     <div class="row"><span>category</span><b>${esc(m.category || "—")}</b></div>
     <div class="row"><span>phase</span><b>${esc(m.phase)}${m.phase === "primary" && m.startTime > Date.now() / 1000 ? " · pre-open" : ""}</b></div>
     <div class="row"><span>spot</span><b>${p ? esc(p) : "via quote"}</b></div>
@@ -383,7 +392,7 @@ const CONCEPTS = [
   },
   {
     k: ["fee", "cost", "creation"],
-    a: `**Fees.**\nPrimary buys pay a small protocol fee returned in the quote (feeUsdc). Creating a market has a USDC creation fee quoted via \`marketquote\` before you build (currently 0 for many categories). Trading-fee accrual is visible per market in the snapshot.`,
+    a: `**Fees.**\nPrimary buys pay a protocol fee returned in the quote (feeUsdc) — see any recorded quote in the Quotes tab. Creating a market costs USDC, quoted via \`marketquote\` before you build: the How-it-works tab shows a real recorded creation quote and its fee split (liquidity + platform).`,
   },
   {
     k: ["brief", "daily"],
@@ -417,7 +426,7 @@ function handleAsk(qRaw) {
         ms
           .map(
             (m, i) =>
-              `<div class="row"><span>${i + 1}. ${esc(m.title.slice(0, 64))}</span><b>${countdown(m.endTime)}</b></div>`,
+              `<div class="row"><span>${i + 1}. ${esc(mTitle(m).slice(0, 64))}</span><b>${countdown(m.endTime)}</b></div>`,
           )
           .join("") +
         `<div class="sub">ask “tell me about …” for any of these</div>`,
@@ -450,30 +459,52 @@ function handleAsk(qRaw) {
         ms
           .map(
             (m) =>
-              `<div class="row"><span>${marketBadge(m)} ${esc(m.title.slice(0, 58))}</span><b>${countdown(m.endTime) || "—"}</b></div>`,
+              `<div class="row"><span>${marketBadge(m)} ${esc(mTitle(m).slice(0, 58))}</span><b>${countdown(m.endTime) || "—"}</b></div>`,
           )
           .join("") +
         `<div class="sub">say “tell me about …” for a full card, with its market id</div>`,
     );
     return;
   }
-  // 3. quote intent
+  // 3. quote intent — served from the recorded quote matrix (not live)
   const qm = nq.match(/quote\s*\$?(\d+(?:\.\d+)?)\s*(yes|no)?/);
   if (qm) {
-    const amt = qm[1],
-      side = (qm[2] || "yes").toUpperCase();
+    const amt = Number(qm[1]).toFixed(2),
+      side = qm[2] || "yes";
     const m =
       findMarket(
         q
           .replace(/quote\s*\$?\d+(\.\d+)?\s*(yes|no)?/i, "")
           .replace(/on|for|market/gi, ""),
       ) || findMarket(q);
-    if (m && m.phase === "primary" && m.startTime <= now) {
+    const Q = SNAP.quoteMatrix || [];
+    const mine = m ? Q.filter((x) => x.marketId === m.id) : [];
+    const rec =
+      mine.find((x) => x.side === side && x.amountUsdc === amt) ||
+      mine.find((x) => x.side === side) ||
+      null;
+    if (m && rec) {
+      const near =
+        rec.amountUsdc === amt
+          ? ""
+          : ` Your exact ask ($${Number(amt).toFixed(0)} ${side.toUpperCase()}) wasn't recorded — this is the nearest recorded request for this market on the ${side.toUpperCase()} side.`;
       say(
         "",
         marketCard(
           m,
-          `<div class="sub">Live quote needs an API call per ask — the agent pipeline runs real <code>primaryorderquote</code> probes; the trading tab of the official playground executes steps 2–4 with your wallet. In this demo build, quote cards for ${side} \$${amt} are shown for pre-open markets with their open time.</div>`,
+          rec.ok
+            ? `<div class="row"><span>recorded ${esc(rec.side.toUpperCase())} $${Number(rec.amountUsdc).toFixed(0)} estimate</span><b class="stat">${esc(rec.shares ?? "?")} shares @ ${esc(rec.avgPrice ?? "?")} avg${rec.feeUsdc ? ` · fee ${esc(rec.feeUsdc)} USDC` : ""}</b></div>
+               <div class="sub">Recorded by the pipeline at snapshot time (${esc(SNAP.generatedAt)}) — not a live quote.${near} Full matrix in the Quotes tab.</div>`
+            : `<div class="row"><span>recorded ${esc(rec.side.toUpperCase())} $${Number(rec.amountUsdc).toFixed(0)} request</span><b>rejected · HTTP ${esc(rec.http ?? "?")} · ${esc(rec.error)}</b></div>
+               <div class="sub">Rejection recorded as-is at snapshot time — not a live quote.${near} Full matrix in the Quotes tab.</div>`,
+        ),
+      );
+    } else if (m && mine.length) {
+      say(
+        "",
+        marketCard(
+          m,
+          `<div class="sub">No ${side.toUpperCase()} quote recorded for this market in the current snapshot (recorded sides: ${[...new Set(mine.map((x) => x.side))].map((s) => s.toUpperCase()).join(", ")}). The Quotes tab shows the full matrix; on-demand quoting isn't implemented in this build.</div>`,
         ),
       );
     } else if (m) {
@@ -481,7 +512,7 @@ function handleAsk(qRaw) {
         "",
         marketCard(
           m,
-          `<div class="sub">This market is ${m.phase === "primary" ? "pre-open (trading starts " + fmtT(m.startTime) + ")" : "past primary — secondary/resolved"}; a ${side} quote for \$${amt} would ${m.phase === "primary" ? "open then" : "not be fillable on the curve"}.</div>`,
+          `<div class="sub">This market isn't in the current quote matrix — the pipeline records a fixed market × side × amount set each refresh. See the Quotes tab for everything recorded. This market is ${m.phase === "primary" && m.startTime > now ? "pre-open (trading starts " + fmtT(m.startTime) + ")" : m.phase + " phase"}.</div>`,
         ),
       );
     } else {
