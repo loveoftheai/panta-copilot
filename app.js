@@ -61,6 +61,7 @@ async function boot() {
     `${SNAP.marketCount} markets in catalog · ${SNAP.detailCount} detailed`;
   renderFilters();
   renderWall("all");
+  renderQuotes();
   renderPositions();
   loadBrief();
   seedChat();
@@ -146,6 +147,57 @@ function renderWall(key) {
       .join("") || '<p style="color:var(--dim)">no markets in this filter.</p>';
 }
 
+/* ---------- recorded quotes (agent-fed matrix, not live) ---------- */
+function renderQuotes() {
+  const Q = SNAP.quoteMatrix || [];
+  const sel = $("#qsel");
+  const res = $("#qres");
+  if (!sel || !res) return;
+  if (!Q.length) {
+    res.innerHTML =
+      "<p>no quote matrix in this snapshot — the pipeline records market × side × amount quotes daily.</p>";
+    $("#qtable").innerHTML = "";
+    return;
+  }
+  const mIds = [...new Set(Q.map((q) => q.marketId))];
+  const title = (id) =>
+    (SNAP.markets.find((m) => m.id === id)?.title || id).slice(0, 70);
+  sel.innerHTML =
+    `<select id="qm">${mIds.map((i) => `<option value="${i}">${esc(title(i))}</option>`).join("")}</select>` +
+    `<select id="qs"><option value="yes">YES</option><option value="no">NO</option></select>` +
+    `<select id="qa"><option value="5.00">$5</option><option value="25.00">$25</option><option value="100.00">$100</option></select>` +
+    `<span class="fineprint" style="align-self:center">recorded ${fmtT(Date.parse(SNAP.generatedAt) / 1000)}</span>`;
+  const show = () => {
+    const r =
+      Q.find(
+        (q) =>
+          q.marketId === $("#qm").value &&
+          q.side === $("#qs").value &&
+          q.amountUsdc === $("#qa").value,
+      ) || null;
+    res.innerHTML = !r
+      ? "<p>not recorded in this snapshot.</p>"
+      : r.ok
+        ? `<div class="row"><span>fill</span><b class="stat">${esc(r.shares ?? "?")} shares @ ${esc(r.avgPrice ?? "?")} avg${r.feeUsdc ? ` · fee ${esc(r.feeUsdc)} USDC` : ""}</b></div>
+           <div class="row"><span>as of</span><b>${esc(SNAP.generatedAt)}</b></div>
+           <p class="fineprint">Recorded by the pipeline at snapshot time — not a live quote.</p>`
+        : `<div class="row"><span>rejected</span><b class="stat">HTTP ${esc(r.http ?? "?")} · ${esc(r.error)}</b></div>
+           <p class="fineprint">Rejections are recorded as-is — the desk never invents prices.</p>`;
+  };
+  ["qm", "qs", "qa"].forEach((id) =>
+    $("#" + id).addEventListener("change", show),
+  );
+  show();
+  $("#qtable").innerHTML = `<table class="qt"><tbody>${Q.map(
+    (q) =>
+      `<tr><td>${esc(title(q.marketId).slice(0, 40))}</td><td>${q.side.toUpperCase()}</td><td>$${Number(q.amountUsdc).toFixed(0)}</td><td>${
+        q.ok
+          ? `<b class="stat">${esc(q.shares ?? "?")} sh @ ${esc(q.avgPrice ?? "?")}</b>`
+          : `<span style="color:var(--dim)">${esc(q.http ?? "")} ${esc(q.error || "")}</span>`
+      }</td></tr>`,
+  ).join("")}</tbody></table>`;
+}
+
 /* ---------- positions (desk wallet, agent-fed) ---------- */
 function renderPositions() {
   const el = $("#posbody");
@@ -162,12 +214,12 @@ function renderPositions() {
         `<div class="row"><span>${esc(x.marketId.slice(0, 10))}… · ${esc(x.side || "?")}</span><b>${esc(x.shares ?? "?")} sh · ${esc(x.valueUsdc ?? "?")} USDC${x.claimable ? " · claimable" : ""}</b></div>`,
     )
     .join("");
-  el.innerHTML = `<h2>Desk wallet — live via GET /positions/</h2>
+  el.innerHTML = `<h2>Desk wallet — agent-fed snapshot (GET /positions/ at refresh time)</h2>
     <div class="row"><span>wallet</span><b style="font-family:ui-monospace;font-size:11px">${esc(p.wallet.slice(0, 14))}…</b></div>
     <div class="row"><span>current value</span><b class="stat">${esc(s.currentValueUsdc)} USDC</b></div>
     <div class="row"><span>primary contributed</span><b>${esc(s.primaryContributedUsdc)} USDC</b></div>
     <div class="row"><span>positions</span><b>${s.valuedPositions} valued · ${s.unvaluedPositions} unvalued</b></div>
-    ${rows || "<p>This desk wallet has no open positions yet — trading requires signing an unsigned tx in a real wallet (see How it works), so the demo desk stays flat by design. The pipeline re-reads this endpoint every snapshot; any wallet address can be checked the same way.</p>"}`;
+    ${rows || "<p>This desk wallet held no open positions at the last snapshot (the pipeline re-reads this endpoint every refresh; any wallet can be checked the same way). Trading would require signing an unsigned transaction in a real wallet — see How it works; this app never holds keys.</p>"}`;
 }
 
 /* ---------- daily brief ---------- */
