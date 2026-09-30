@@ -94,6 +94,23 @@ if (!items.length) {
 }
 console.log(`catalog: ${items.length} unique markets`);
 
+// 1a. persistent registry — Panta's list pages rotate; union every market ever
+//     seen across daily pulls so tracked coverage grows instead of resetting.
+const stamp = new Date().toISOString();
+let registry = { firstSeen: {}, lastSeen: {}, pulls: 0 };
+try {
+  registry = JSON.parse(readFileSync(OUT("registry.json"), "utf8"));
+} catch {}
+registry.pulls = (registry.pulls || 0) + 1;
+for (const m of items) {
+  registry.firstSeen[m.marketId] = registry.firstSeen[m.marketId] || stamp;
+  registry.lastSeen[m.marketId] = stamp;
+}
+const regCount = Object.keys(registry.firstSeen).length;
+console.log(
+  `registry: ${regCount} markets tracked after ${registry.pulls} pulls`,
+);
+
 // 2. details for up to 40 non-cancelled (title/phase/times live from detail endpoint)
 const open = items
   .filter((m) => m.phase !== "cancelled" && m.status !== "closed")
@@ -164,11 +181,45 @@ console.log(
 // 4. snapshot
 const now = new Date();
 const nowS = now.getTime() / 1000;
+// 3c. day-over-day diff vs the previous snapshot (new / phase-changed / rotated out)
+const changes = {
+  prevGeneratedAt: null,
+  newIds: [],
+  phaseChanged: [],
+  notSeenToday: 0,
+};
+try {
+  const prev = JSON.parse(readFileSync(OUT("snapshot.json"), "utf8"));
+  changes.prevGeneratedAt = prev.generatedAt;
+  const prevById = new Map((prev.markets || []).map((m) => [m.id, m]));
+  const todayIds = new Set(uniq.map((d) => d.marketId));
+  for (const d of uniq) {
+    const p = prevById.get(d.marketId);
+    if (!p) {
+      if (registry.firstSeen[d.marketId] === stamp)
+        changes.newIds.push(d.marketId);
+    } else if (p.phase !== d.phase) {
+      changes.phaseChanged.push({ id: d.marketId, from: p.phase, to: d.phase });
+    }
+  }
+  changes.notSeenToday = [...prevById.keys()].filter(
+    (id) => !todayIds.has(id),
+  ).length;
+} catch {}
+console.log(
+  `diff vs prev: +${changes.newIds.length} first-seen, ${changes.phaseChanged.length} phase changes, ${changes.notSeenToday} rotated out of today's list`,
+);
 const snap = {
   agent: "loveoftheai agent pipeline (Claude Code on DGX Spark)",
   generatedAt: now.toISOString(),
   source: "Panta API v1 (live-api.panta.market)",
   marketCount: items.length,
+  registry: {
+    marketsTracked: regCount,
+    pulls: registry.pulls,
+    since: Object.values(registry.firstSeen).sort()[0],
+  },
+  changes,
   detailCount: uniq.length,
   probes,
   quoteMatrix,
@@ -191,9 +242,10 @@ const snap = {
     isGraduated: d.isGraduated,
   })),
   notes:
-    "Catalog endpoint returns up to 50 per pull (server cursor never advances); this snapshot is deduped. Catalog phase can be stale vs per-market detail; detail endpoint wins here. Quote probes and the quote matrix are real POST /primaryorderquote/ calls ($5 YES plus market × side × amount, never broadcast) — rejections recorded as-is.",
+    "Catalog endpoint returns up to 50 per pull (server cursor never advances); this snapshot is deduped. A persistent registry accumulates every market ever seen across daily pulls (marketsTracked counts it) because the live list rotates. Catalog phase can be stale vs per-market detail; detail endpoint wins here. Quote probes and the quote matrix are real POST /primaryorderquote/ calls ($5 YES plus market × side × amount, never broadcast) — rejections recorded as-is.",
 };
 writeFileSync(OUT("snapshot.json"), JSON.stringify(snap, null, 1));
+writeFileSync(OUT("registry.json"), JSON.stringify(registry));
 
 // 4. regenerate brief
 const ms = snap.markets;
@@ -228,9 +280,16 @@ const t = (m) =>
       : m.title
     : "—";
 const date = now.toISOString().slice(0, 10);
+const diffNote = changes.prevGeneratedAt
+  ? `Since the ${changes.prevGeneratedAt.slice(0, 10)} pull: **${changes.newIds.length} market(s) seen for the first time**, ${changes.phaseChanged.length} phase change(s)${changes.phaseChanged.length ? " — " + changes.phaseChanged.map((c) => `${String(c.id).slice(0, 6)}… ${c.from}→${c.to}`).join(", ") : ""}, and ${changes.notSeenToday} market(s) from yesterday's detailed list rotated out of today's live catalog. Registry now tracks **${regCount} markets** across ${registry.pulls} pulls (the live list caps at 50 and rotates; the registry is the union of everything ever seen).`
+  : `First pull with the persistent registry: tracking **${regCount} markets**. Tomorrow's brief gains a day-over-day diff (new / phase-changed / rotated-out) from this baseline.`;
 const brief = `# Daily Brief — ${date}
 
-*Written by the agent pipeline from a live Panta API pull at ${snap.generatedAt} · catalog ${snap.marketCount} unique markets, ${snap.detailCount} detailed.*
+*Written by the agent pipeline from a live Panta API pull at ${snap.generatedAt} · catalog ${snap.marketCount} unique markets, ${snap.detailCount} detailed, ${regCount} tracked in registry.*
+
+## Since the last pull
+
+${diffNote}
 
 ## The catalog this morning
 
