@@ -64,10 +64,12 @@
           <p>
             Panta's live list rotates and caps at 50 per pull; this registry is
             the union of <em>every</em> market the agent has ever seen across
-            pulls. A sweep daemon runs every 2 hours — one catalog pull, and a
-            price point is appended per market only when price / phase / volume
-            actually changed. Sparklines show the YES price through those
-            points; flat sections mean no change was recorded.
+            pulls. A sweep runs every 2 hours: one catalog pull for discovery,
+            then per-market <em>detail</em> pulls — the list endpoint carries no
+            prices, details are the price source. A point is appended only when
+            price / phase / volume changed; flat sparkline sections mean no
+            change was recorded. Markets without a sparkline haven't been
+            enriched with a detail pull yet.
           </p>
           <div id="regstats"></div>
           <div class="wall" id="regwall"></div>
@@ -183,6 +185,12 @@
               >demo.webm</a
             >
             — plays in-browser.
+          </p>
+          <h3>Collector</h3>
+          <p>
+            The full pipeline — daily pull + 2-hour registry sweep with detail
+            price enrichment — is documented and reproducible in
+            <a href="https://github.com/loveoftheai/panta-copilot/blob/main/COLLECTOR.md" target="_blank" rel="noopener">COLLECTOR.md</a>.
           </p>
           <h3>Attribution</h3>
           <p>
