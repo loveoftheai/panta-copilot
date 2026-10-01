@@ -405,3 +405,4 @@ table.qt td {
 table.qt td:first-child {
   color: var(--dim, #8b8f98);
 }
+.star{background:none;border:none;color:var(--acc);cursor:pointer;font-size:15px;line-height:1;padding:0 2px}.star:hover{transform:scale(1.2)}
