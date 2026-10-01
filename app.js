@@ -248,6 +248,48 @@ function renderWall(key) {
       .join("") || '<p style="color:var(--dim)">no markets in this filter.</p>';
 }
 
+/* ---------- watchlist + since-last-visit (client-side only, localStorage) ---------- */
+const WATCH = {
+  ids: (() => {
+    try {
+      return JSON.parse(localStorage.pc_watch || "[]");
+    } catch {
+      return [];
+    }
+  })(),
+  toggle(id) {
+    const i = this.ids.indexOf(id);
+    if (i >= 0) this.ids.splice(i, 1);
+    else this.ids.push(id);
+    try {
+      localStorage.pc_watch = JSON.stringify(this.ids);
+    } catch {}
+  },
+};
+let SINCE = null,
+  SINCE_DONE = false;
+function computeSince(reg) {
+  SINCE_DONE = true;
+  let lv = null;
+  try {
+    lv = localStorage.pc_lastVisit || null;
+  } catch {}
+  try {
+    localStorage.pc_lastVisit = new Date().toISOString();
+  } catch {}
+  if (!reg || !lv) return null;
+  const pts = {},
+    priced = {};
+  for (const [id, h] of Object.entries(reg.history || {})) {
+    const after = h.filter((p) => p[0] > lv);
+    if (after.length) {
+      pts[id] = after.length;
+      priced[id] = after.filter((p) => p[1] != null).length;
+    }
+  }
+  return { lastVisit: lv, pts, priced };
+}
+
 /* ---------- registry (2h-cadence sweep, agent-fed) ---------- */
 function sparkSVG(h) {
   const W = 110,
@@ -287,6 +329,10 @@ async function renderRegistry() {
     Object.values(reg.lastSeen || {})
       .sort()
       .pop() || "";
+  if (!SINCE_DONE) SINCE = computeSince(reg);
+  const sincePts = SINCE
+    ? Object.values(SINCE.pts).reduce((a, b) => a + b, 0)
+    : 0;
   stats.innerHTML = `<div class="row"><span>markets ever seen</span><b class="stat">${ids.length}</b></div>
     <div class="row"><span>catalog pulls</span><b>${reg.pulls ?? "?"}</b></div>
     <div class="row"><span>change-only observations</span><b>${pts}</b><span class="sub" style="margin-left:6px">${priceObs} with a price</span></div>
@@ -295,7 +341,12 @@ async function renderRegistry() {
         .slice(0, 16)
         .replace("T", " "),
     )} UTC</b></div>
-    <div class="row"><span>last sweep</span><b>${esc(String(lastSweep).slice(0, 16).replace("T", " "))} UTC</b></div>`;
+    <div class="row"><span>last sweep</span><b>${esc(String(lastSweep).slice(0, 16).replace("T", " "))} UTC</b></div>
+    <div class="row"><span>since your last visit</span><b>${
+      SINCE
+        ? `${sincePts} change-points across ${Object.keys(SINCE.pts).length} markets · last ${esc(SINCE.lastVisit.slice(5, 16).replace("T", " "))} UTC`
+        : "first visit in this browser"
+    }</b></div>`;
   const label = (id) => {
     const m = SNAP.markets.find((x) => x.id === id);
     if (m && m.title && m.title !== "(untitled)") return m.title;
@@ -308,8 +359,28 @@ async function renderRegistry() {
     .filter(([, h]) => h.length)
     .sort((a, b) => b[1].length - a[1].length)
     .slice(0, 48);
+  const watchRows = WATCH.ids.filter((id) => hist[id] && hist[id].length);
+  const wlHtml = watchRows.length
+    ? `<div class="sub" style="margin:10px 0 4px">★ watchlist — this browser only (localStorage, no account, no backend)</div>` +
+      watchRows
+        .map((id) => {
+          const h = hist[id];
+          const priced = h.filter((p) => p[1] != null).length;
+          const sPts = (SINCE && SINCE.pts[id]) || 0;
+          const sPriced = (SINCE && SINCE.priced[id]) || 0;
+          return `<div class="row" style="padding:5px 0;border-bottom:1px solid var(--line)"><span style="max-width:58%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(label(id))}">${esc(label(id))}</span><b class="stat">${esc(h[h.length - 1][4] || "?")} · ${priced} priced obs${sPts ? ` · <span style="color:var(--acc)">+${sPts}${sPriced ? ` (${sPriced} priced)` : ""} since last visit</span>` : ""}</b></div>`;
+        })
+        .join("")
+    : "";
+  wallEl.onclick = (e) => {
+    const b = e.target.closest("button[data-w]");
+    if (!b) return;
+    WATCH.toggle(b.dataset.w);
+    renderRegistry();
+  };
   wallEl.innerHTML =
-    rows
+    wlHtml +
+    (rows
       .map(([id, h]) => {
         const fp = h[0][1] != null ? Number(h[0][1]) : null;
         const lp =
@@ -318,7 +389,7 @@ async function renderRegistry() {
           fp != null && lp != null && fp > 0 ? ((lp - fp) / fp) * 100 : null;
         return `<div class="mcard">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <span class="cat">${esc(meta[id]?.cat || "—")}</span><span class="badge">${esc(h[h.length - 1][4] || meta[id]?.phase || "?")}</span>
+        <span class="cat">${esc(meta[id]?.cat || "—")}</span><span style="display:flex;align-items:center;gap:4px"><button class="star" data-w="${esc(id)}" title="watchlist (this browser)">${WATCH.ids.includes(id) ? "★" : "☆"}</button><span class="badge">${esc(h[h.length - 1][4] || meta[id]?.phase || "?")}</span></span>
       </div>
       <div class="title">${esc(label(id))}</div>
       ${sparkSVG(h)}
@@ -327,7 +398,7 @@ async function renderRegistry() {
     </div>`;
       })
       .join("") ||
-    '<p style="color:var(--dim)">no history points yet — the 2h sweep is accumulating.</p>';
+      '<p style="color:var(--dim)">no history points yet — the 2h sweep is accumulating.</p>');
 }
 
 /* ---------- recorded quotes (agent-fed matrix, not live) ---------- */
