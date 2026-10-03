@@ -1,109 +1,91 @@
 {
  "agent": "loveoftheai agent pipeline (Claude Code on DGX Spark)",
- "generatedAt": "2026-10-03T22:55:10.733Z",
+ "generatedAt": "2026-10-03T22:57:41.419Z",
  "source": "Panta API v1 (live-api.panta.market)",
  "marketCount": 50,
  "detailCount": 40,
  "registry": {
   "marketsTracked": 54,
-  "pulls": 55,
+  "pulls": 56,
   "since": "2026-09-30T11:08:54.031Z"
  },
  "changes": {
-  "prevGeneratedAt": "2026-10-03T02:44:42.692Z",
-  "newIds": [
-   "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU"
-  ],
+  "prevGeneratedAt": "2026-10-03T22:55:10.733Z",
+  "newIds": [],
   "phaseChanged": [
    {
-    "id": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
     "id": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
-    "from": "secondary",
-    "to": "resolved"
+    "from": "resolved",
+    "to": "secondary"
    },
    {
     "id": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "F2nK5f6NTgVA8zVT2CzRYRNaMcntv3njEkNCozGMs2Sj",
     "from": "secondary",
     "to": "resolved"
    },
    {
-    "id": "5z7TxmJuBngEFcBWT2GfWBmmQvzcP3cH3Vs54HPkaeUN",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "CMMp6w39hnbsW5qLaeRV8HDioq2HfDx4bR6GWkQFLwTM",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "8R5sx7Ms8BfYZz1na6ZLuh39JVMQgi6eNnNASj5pVjAY",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "AWesFhQ1uQXwsMBE2EPRVqKD6iG8GqiU2KMSkAeFqrb4",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "F5RSyCPuS4KLiUtzvRai5uaVAMLD9aAt22bSxgDK3z1C",
+    "id": "FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9",
     "from": "secondary",
     "to": "resolved"
    },
    {
     "id": "7qCJEoQXSdNm7RdVsfu3uK5aLnv8CaKPKu13AHhXX6Pg",
-    "from": "secondary",
-    "to": "resolved"
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "27ZuF9VF6Tz1HcuwsW4ys4jAshNciFqYPSsmU3z4AMJM",
+    "from": "resolved",
+    "to": "secondary"
+   },
+   {
+    "id": "3xTuN8KdingQNSoNCaiFgRAQepMpgx4Cfbn9u3C7KRq8",
+    "from": "resolved",
+    "to": "secondary"
    },
    {
     "id": "EarxUvuGTwMs5nKvAgkenYAdTa9kvXibjiNSQcTRxdFY",
-    "from": "secondary",
-    "to": "resolved"
+    "from": "resolved",
+    "to": "secondary"
    },
    {
     "id": "HeZfxnRXKZup67xdrP9V7pTacHvUZWkhwt8zfYPYBG9K",
-    "from": "secondary",
-    "to": "resolved"
-   },
-   {
-    "id": "GXwpfBfnuftdr9JTm1iydKyCKCXCYjzTefqksG78cR3h",
-    "from": "secondary",
-    "to": "resolved"
+    "from": "resolved",
+    "to": "secondary"
    },
    {
     "id": "FdLsiSVG58sLSLbJ85dP3CaHvXGGbke8nsbMHgY8yt1T",
-    "from": "secondary",
-    "to": "resolved"
+    "from": "resolved",
+    "to": "secondary"
    },
    {
-    "id": "ErqQGGFrw3ebJVqPQXHis31Y8JqWgmBKdJDKGkJKCzH5",
+    "id": "1Nm7PCxoHUwGk1J9NoSfy26TQZkitwDf6mamFTZDn1r",
     "from": "secondary",
     "to": "resolved"
    }
   ],
-  "notSeenToday": 1
+  "notSeenToday": 0
  },
  "probes": [
   {
    "marketId": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ts": "2026-10-03T22:54:32.127Z",
-   "ok": true,
-   "shares": "9.822511",
-   "avgPrice": "0.509034",
-   "feeUsdc": "0.10"
+   "ts": "2026-10-03T22:57:02.442Z",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   },
   {
    "marketId": "5cyMGUVDcToJ8ws5V1sKkGnzthLrLTsqEjo3Pa2HNU8v",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ts": "2026-10-03T22:54:34.813Z",
+   "ts": "2026-10-03T22:57:05.170Z",
    "ok": true,
    "shares": "9.889901",
    "avgPrice": "0.505566",
@@ -115,7 +97,7 @@
    "marketId": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ts": "2026-10-03T22:54:37.505Z",
+   "ts": "2026-10-03T22:57:07.942Z",
    "ok": true,
    "shares": "9.822511",
    "avgPrice": "0.509034",
@@ -125,16 +107,17 @@
    "marketId": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
    "side": "yes",
    "amountUsdc": "25.00",
-   "ts": "2026-10-03T22:54:40.338Z",
-   "ok": false,
-   "http": 400,
-   "error": "INVALID_MARKET_PARAMS"
+   "ts": "2026-10-03T22:57:10.679Z",
+   "ok": true,
+   "shares": "47.637988",
+   "avgPrice": "0.524791",
+   "feeUsdc": "0.50"
   },
   {
    "marketId": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
    "side": "yes",
    "amountUsdc": "100.00",
-   "ts": "2026-10-03T22:54:43.053Z",
+   "ts": "2026-10-03T22:57:13.611Z",
    "ok": true,
    "shares": "173.268939",
    "avgPrice": "0.577137",
@@ -144,7 +127,7 @@
    "marketId": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
    "side": "no",
    "amountUsdc": "5.00",
-   "ts": "2026-10-03T22:54:45.769Z",
+   "ts": "2026-10-03T22:57:16.276Z",
    "ok": true,
    "shares": "10.015403",
    "avgPrice": "0.499231",
@@ -154,7 +137,7 @@
    "marketId": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
    "side": "no",
    "amountUsdc": "25.00",
-   "ts": "2026-10-03T22:54:48.518Z",
+   "ts": "2026-10-03T22:57:19.036Z",
    "ok": true,
    "shares": "48.517904",
    "avgPrice": "0.515273",
@@ -164,7 +147,7 @@
    "marketId": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
    "side": "no",
    "amountUsdc": "100.00",
-   "ts": "2026-10-03T22:54:51.240Z",
+   "ts": "2026-10-03T22:57:21.716Z",
    "ok": true,
    "shares": "175.942561",
    "avgPrice": "0.568367",
@@ -174,7 +157,7 @@
    "marketId": "5cyMGUVDcToJ8ws5V1sKkGnzthLrLTsqEjo3Pa2HNU8v",
    "side": "yes",
    "amountUsdc": "5.00",
-   "ts": "2026-10-03T22:54:53.985Z",
+   "ts": "2026-10-03T22:57:24.483Z",
    "ok": true,
    "shares": "9.889901",
    "avgPrice": "0.505566",
@@ -184,7 +167,7 @@
    "marketId": "5cyMGUVDcToJ8ws5V1sKkGnzthLrLTsqEjo3Pa2HNU8v",
    "side": "yes",
    "amountUsdc": "25.00",
-   "ts": "2026-10-03T22:54:56.660Z",
+   "ts": "2026-10-03T22:57:27.347Z",
    "ok": true,
    "shares": "47.945734",
    "avgPrice": "0.521422",
@@ -194,7 +177,7 @@
    "marketId": "5cyMGUVDcToJ8ws5V1sKkGnzthLrLTsqEjo3Pa2HNU8v",
    "side": "yes",
    "amountUsdc": "100.00",
-   "ts": "2026-10-03T22:54:59.392Z",
+   "ts": "2026-10-03T22:57:30.096Z",
    "ok": true,
    "shares": "174.206479",
    "avgPrice": "0.574031",
@@ -204,7 +187,7 @@
    "marketId": "5cyMGUVDcToJ8ws5V1sKkGnzthLrLTsqEjo3Pa2HNU8v",
    "side": "no",
    "amountUsdc": "5.00",
-   "ts": "2026-10-03T22:55:02.074Z",
+   "ts": "2026-10-03T22:57:32.801Z",
    "ok": false,
    "http": 400,
    "error": "INVALID_MARKET_PARAMS"
@@ -213,21 +196,19 @@
    "marketId": "5cyMGUVDcToJ8ws5V1sKkGnzthLrLTsqEjo3Pa2HNU8v",
    "side": "no",
    "amountUsdc": "25.00",
-   "ts": "2026-10-03T22:55:04.802Z",
-   "ok": true,
-   "shares": "48.203068",
-   "avgPrice": "0.518639",
-   "feeUsdc": "0.50"
+   "ts": "2026-10-03T22:57:35.443Z",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   },
   {
    "marketId": "5cyMGUVDcToJ8ws5V1sKkGnzthLrLTsqEjo3Pa2HNU8v",
    "side": "no",
    "amountUsdc": "100.00",
-   "ts": "2026-10-03T22:55:07.535Z",
-   "ok": true,
-   "shares": "174.988412",
-   "avgPrice": "0.571466",
-   "feeUsdc": "2.00"
+   "ts": "2026-10-03T22:57:38.168Z",
+   "ok": false,
+   "http": 400,
+   "error": "INVALID_MARKET_PARAMS"
   }
  ],
  "deskPositions": {
@@ -249,13 +230,13 @@
    "title": "Will bitcoin hit 85k in by October 4th 2026 1am WAT",
    "description": "",
    "phase": "primary",
-   "status": "open",
+   "status": "primary",
    "resolved": false,
    "startTime": 1791066437,
    "endTime": 1791072900,
    "oracle": "https://www.coingecko.com,https://coinmarketcap.com,https://www.coinbase.com,https://www.binance.com",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0.504942094",
+   "noPrice": "0.495057906",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": false
@@ -331,16 +312,16 @@
   {
    "id": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
    "category": "pop-culture",
-   "title": "Will a female housemate win Big Brother Naija Season 11?⁠",
+   "title": "(untitled)",
    "description": "",
    "phase": "secondary",
-   "status": "secondary",
+   "status": "secondary_active",
    "resolved": false,
    "startTime": 1790597700,
    "endTime": 1791151200,
    "oracle": "ng-pop-africamagic",
-   "yesPrice": "0.520520999",
-   "noPrice": "0.479479001",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -348,16 +329,16 @@
   {
    "id": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
    "category": "commodities",
-   "title": "Will ICE Brent Crude Oil Futures (December 2026 Contract) settle at or above $104.00 per barrel on Thursday, October 1, 2026, at 6:30 PM BST?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1790870400,
    "endTime": 1790875800,
    "oracle": "world-stocks-bloomberg",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -365,16 +346,16 @@
   {
    "id": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
    "category": "sports",
-   "title": "Over 38.5 combined score in the Pittsburgh Steelers vs. Cleveland Browns game on Thursday, October 1, 2026?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1790901900,
    "endTime": 1790913600,
    "oracle": "world-sports-espn",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -382,16 +363,16 @@
   {
    "id": "F2nK5f6NTgVA8zVT2CzRYRNaMcntv3njEkNCozGMs2Sj",
    "category": "space-universe",
-   "title": "(untitled)",
+   "title": "Will SpaceX’s Starship (Flight 14) successfully achieve its target Earth orbit and deploy at least one Starlink V3 satellite on or before Wednesday, September 30, 2026, at 11:59 PM BST?",
    "description": "",
-   "phase": "secondary",
-   "status": "secondary_active",
+   "phase": "resolved",
+   "status": "resolved",
    "resolved": true,
    "startTime": 1790802000,
    "endTime": 1790809140,
    "oracle": "world-space-nasa",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "1",
+   "noPrice": "0",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -450,16 +431,16 @@
   {
    "id": "FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9",
    "category": "sports",
-   "title": "Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellatio",
+   "title": "Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellation of the planned October defense spending review before Wednesday, September 23, 2026, at 11:59 PM BST?",
    "description": "Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellation of the planned October defense spending review before Wednesday, September 23, 2026, at 11:59 PM BST?",
-   "phase": "secondary",
-   "status": "secondary_active",
-   "resolved": false,
+   "phase": "resolved",
+   "status": "resolved",
+   "resolved": true,
    "startTime": 1790193600,
    "endTime": 1790204340,
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -552,16 +533,16 @@
   {
    "id": "7qCJEoQXSdNm7RdVsfu3uK5aLnv8CaKPKu13AHhXX6Pg",
    "category": "politics",
-   "title": "Will a bipartisan compromise text of the CLARITY Act be officially introduced in the House by Thursday, September 17, 2026?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1789527600,
    "endTime": 1789679400,
    "oracle": "world-politics-ap",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -569,16 +550,16 @@
   {
    "id": "27ZuF9VF6Tz1HcuwsW4ys4jAshNciFqYPSsmU3z4AMJM",
    "category": "sports",
-   "title": "Will U.S. Initial Jobless Claims be reported at or above 206,000 on Thursday, September 17, 2026?",
+   "title": "Will U.S. Initial Jobless Claims be reported at or above 206,000 on Thursday, September 17",
    "description": "Will U.S. Initial Jobless Claims be reported at or above 206,000 on Thursday, September 17, 2026?",
-   "phase": "resolved",
-   "status": "resolved",
-   "resolved": true,
+   "phase": "secondary",
+   "status": "secondary_active",
+   "resolved": false,
    "startTime": 1789639200,
    "endTime": 1789653600,
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -620,16 +601,16 @@
   {
    "id": "3xTuN8KdingQNSoNCaiFgRAQepMpgx4Cfbn9u3C7KRq8",
    "category": "crypto",
-   "title": "Will Bitcoin (BTC) close above $78,000 on September 16, 2026?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1789592400,
    "endTime": 1789600200,
    "oracle": "world-crypto-coingecko",
-   "yesPrice": "0",
-   "noPrice": "1",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -773,16 +754,16 @@
   {
    "id": "EarxUvuGTwMs5nKvAgkenYAdTa9kvXibjiNSQcTRxdFY",
    "category": "sports",
-   "title": "Will Kimi Antonelli finish in the Top 6 (6th place or higher) in the Italian Grand Prix?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788699600,
    "endTime": 1788714000,
    "oracle": "eu-sports-skysports",
-   "yesPrice": "1",
-   "noPrice": "0",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -790,16 +771,16 @@
   {
    "id": "HeZfxnRXKZup67xdrP9V7pTacHvUZWkhwt8zfYPYBG9K",
    "category": "commodities",
-   "title": "Will Brent Crude Oil futures (Front-Month) settle at or above $94.50 per barrel on Wednesday, September 9, 2026?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788973200,
    "endTime": 1788979500,
    "oracle": "world-stocks-bloomberg",
-   "yesPrice": "1",
-   "noPrice": "0",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -824,16 +805,16 @@
   {
    "id": "FdLsiSVG58sLSLbJ85dP3CaHvXGGbke8nsbMHgY8yt1T",
    "category": "crypto",
-   "title": "Will Zcash (ZEC) be priced at $1,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM UTC?",
+   "title": "(untitled)",
    "description": "",
-   "phase": "resolved",
-   "status": "resolved",
+   "phase": "secondary",
+   "status": "secondary_active",
    "resolved": true,
    "startTime": 1788861600,
    "endTime": 1788869700,
    "oracle": "world-crypto-coingecko",
-   "yesPrice": "1",
-   "noPrice": "0",
+   "yesPrice": null,
+   "noPrice": null,
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
@@ -841,16 +822,16 @@
   {
    "id": "1Nm7PCxoHUwGk1J9NoSfy26TQZkitwDf6mamFTZDn1r",
    "category": "sports",
-   "title": "Will Bitcoin (BTC) be priced at $81,000.00 or higher on Tuesday, September 8, 2026, at 12:",
+   "title": "Will Bitcoin (BTC) be priced at $81,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM UTC?",
    "description": "Will Bitcoin (BTC) be priced at $81,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM UTC?",
-   "phase": "secondary",
-   "status": "secondary_active",
-   "resolved": false,
+   "phase": "resolved",
+   "status": "resolved",
+   "resolved": true,
    "startTime": 1788861600,
    "endTime": 1788869700,
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "yesPrice": null,
-   "noPrice": null,
+   "yesPrice": "0",
+   "noPrice": "1",
    "primaryVolume": 0,
    "secondaryVolume": 0,
    "isGraduated": true
