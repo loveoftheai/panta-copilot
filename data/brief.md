@@ -1,10 +1,10 @@
-# Daily Brief — 2026-10-06
+# Daily Brief — 2026-10-07
 
-*Written by the agent pipeline from a live Panta API pull at 2026-10-06T22:58:03.499Z · catalog 50 unique markets, 40 detailed, 55 tracked in registry.*
+*Written by the agent pipeline from a live Panta API pull at 2026-10-07T02:44:24.818Z · catalog 50 unique markets, 40 detailed, 55 tracked in registry.*
 
 ## Since the last pull
 
-Since the 2026-10-06 pull: **0 market(s) seen for the first time**, 12 phase change(s) — pqZAm6… secondary→resolved, 4yiz9y… secondary→resolved, ALio3G… secondary→resolved, F2nK5f… secondary→resolved, FFFcvy… secondary→resolved, CMMp6w… resolved→secondary, 4PXNDk… secondary→resolved, GeBYoN… secondary→resolved, GKebvY… secondary→resolved, 3oAkiY… secondary→resolved, A9oqLG… secondary→resolved, GXwpfB… secondary→resolved, and 0 market(s) from yesterday's detailed list not in today's detailed sample (the list caps at 50 and rotates; the registry keeps them). Registry now tracks **55 markets** across 99 pulls (the live list caps at 50 and rotates; the registry is the union of everything ever seen).
+Since the 2026-10-06 pull: **0 market(s) seen for the first time**, 16 phase change(s) — 2vydGh… secondary→resolved, 5cyMGU… secondary→resolved, 6yEBmx… secondary→resolved, ALio3G… resolved→secondary, F2nK5f… resolved→secondary, 6wXkUm… resolved→secondary, 5z7Txm… secondary→resolved, 7qCJEo… secondary→resolved, 3xTuN8… secondary→resolved, 5nNayE… secondary→resolved, EhehvN… secondary→resolved, A9oqLG… resolved→secondary, EarxUv… resolved→secondary, HeZfxn… resolved→secondary, GXwpfB… resolved→secondary, ErqQGG… resolved→secondary, and 0 market(s) from yesterday's detailed list not in today's detailed sample (the list caps at 50 and rotates; the registry keeps them). Registry now tracks **55 markets** across 102 pulls (the live list caps at 50 and rotates; the registry is the union of everything ever seen).
 
 ## The catalog this morning
 
