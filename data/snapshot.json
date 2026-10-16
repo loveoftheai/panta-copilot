@@ -6,11 +6,11 @@
  "detailCount": 40,
  "registry": {
   "marketsTracked": 67,
-  "pulls": 213,
+  "pulls": 214,
   "since": "2026-09-30T11:08:54.031Z",
-  "lastSweepAt": "2026-10-16T17:25:07.829Z",
-  "historyPoints": 1172,
-  "priceObservations": 588
+  "lastSweepAt": "2026-10-16T19:25:47.533Z",
+  "historyPoints": 1182,
+  "priceObservations": 591
  },
  "changes": {
   "prevGeneratedAt": "2026-10-09T22:55:33.610Z",
