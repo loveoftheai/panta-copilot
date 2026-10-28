@@ -5,12 +5,12 @@
  "marketCount": 50,
  "detailCount": 40,
  "registry": {
-  "marketsTracked": 75,
-  "pulls": 354,
+  "marketsTracked": 76,
+  "pulls": 355,
   "since": "2026-09-30T11:08:54.031Z",
-  "lastSweepAt": "2026-10-28T20:47:40.393Z",
-  "historyPoints": 1706,
-  "priceObservations": 874
+  "lastSweepAt": "2026-10-28T22:48:05.249Z",
+  "historyPoints": 1707,
+  "priceObservations": 875
  },
  "changes": {
   "prevGeneratedAt": "2026-10-09T22:55:33.610Z",
